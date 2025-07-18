@@ -1,0 +1,36 @@
+.subheader-container {
+  background-color: var(--header-bg-primary);
+  /* height: 44px; */
+  border-radius: 6px;
+  border: 1px solid var(--border-color-primary);
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.css-1n1qkn4,
+.css-1xsoqrb {
+  padding: 10px !important;
+}
+
+.subheader-options {
+  width: 80px;
+  height: 30px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color-primary);
+  cursor: pointer;
+  /* padding: 6px 10px; */
+}
+
+.subheader-options.selected {
+  background-color: var(--sidebar-bg-primary);
+  color: var(--text-color-tertiary);
+}
+
+.subheader-options-wrapper {
+  width: 90px;
+  border-right: 2px solid var(--disable-text-light, #8d8d8d80);
+}

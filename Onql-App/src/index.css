@@ -1,0 +1,127 @@
+/* :root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* bg colors */
+  --background-color-primary: #ffffff;
+  --header-bg-primary: #fcfcfc;
+  --sidebar-bg-primary: #47647a;
+  --sidebar-bg-secondary: #ecf7ff;
+  --sidebar-bg-tertiary: #3e5a70;
+
+  /* text color */
+  --text-color-primary: #3c3c3c;
+  --text-color-secondary: #8d8d8d;
+  --text-color-tertiary: #ffffff;
+
+  /* border color */
+  --border-color-primary: #e3e3e3;
+  --border-color-secondary: #ebebeb;
+  --border-color-tertiary: #e7e7e7;
+
+  /* Font family */
+  --font-family-primary: Poppins;
+
+  /* Font sizes */
+  --font-size-primary: 12px;
+  --font-size-secondary: 16px;
+  --font-size-tertiary: 14px;
+
+  /* Font weights */
+  --font-weight-primary: 400;
+  --font-weight-secondary: 500;
+  --font-weight-tertiary: 600;
+}
+
+body,
+p {
+  /* background-color: var(--background-color-primary); */
+  color: var(--text-color-primary);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-primary);
+  font-weight: var(--font-weight-primary);
+}
+
+p {
+  margin-bottom: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
