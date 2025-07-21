@@ -1,8 +1,8 @@
-import SearchBar from "../searchBar/SearchBar";
 import "./DatatbaseListPanel.css";
 import Checkbox from "@mui/material/Checkbox";
 import warning from "../../assets/icons/warning.svg";
 import FormPanel from "../formPanel/FormPanel";
+import CheckboxSearch from "../checkboxSearch/CheckboxSearch";
 
 interface DatatbaseListPanelProps {
   selectedTab: string;
@@ -14,16 +14,7 @@ const DatatbaseListPanel = ({ selectedTab }: DatatbaseListPanelProps) => {
     <>
       <FormPanel panelName="Create Database" selectedTab={selectedTab} />
       <div className="databaseListPanel-container">
-        <div className="databaseListPanel-checkbox-search">
-          <div className="databaseListPanel-header">
-            <div className="databaseListPanel-all-checkbox">
-              <Checkbox {...label} />
-              <p>Check all</p>
-            </div>
-            <p>Drop</p>
-          </div>
-          <SearchBar />
-        </div>
+        <CheckboxSearch />
 
         <table className="databaseListPanel-table">
           <thead className="databaseListPanel-table-header">
