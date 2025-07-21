@@ -1,16 +1,16 @@
-import React from "react";
 import "./SubHeader.css";
 
 interface SubHeaderProps {
   options: string[];
+  selectedTab: string;
+  setSelectedTab: (tab: string) => void;
 }
 
-const SubHeader = ({ options }: SubHeaderProps) => {
-  const [selectedOption, setSelectedOption] = React.useState(options[0]);
-
-  const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
-  };
+const SubHeader = ({
+  options,
+  selectedTab,
+  setSelectedTab,
+}: SubHeaderProps) => {
   return (
     <div className="subheader-container">
       {options.map((option, index) => {
@@ -23,11 +23,11 @@ const SubHeader = ({ options }: SubHeaderProps) => {
           >
             <p
               className={
-                selectedOption === option
+                selectedTab === option
                   ? "subheader-options selected"
                   : "subheader-options"
               }
-              onClick={() => handleOptionClick(option)}
+              onClick={() => setSelectedTab(option)}
             >
               {option}
             </p>

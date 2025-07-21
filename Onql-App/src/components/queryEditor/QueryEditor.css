@@ -1,0 +1,29 @@
+.editor-container {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  height: 200px;
+  font-size: 14px;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+/* Remove dotted focus border on editor wrapper */
+.cm-editor:focus {
+  outline: none;
+}
+
+/* Remove dotted underline from last line area */
+.cm-content {
+  border-bottom: none !important;
+}
+
+/* Optional: remove any other focus outline globally */
+.cm-focused {
+  outline: none !important;
+}
+
+.cm-editor {
+  outline: none !important;
+}

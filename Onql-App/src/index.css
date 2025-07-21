@@ -80,6 +80,7 @@ button:focus-visible {
   --sidebar-bg-primary: #47647a;
   --sidebar-bg-secondary: #ecf7ff;
   --sidebar-bg-tertiary: #3e5a70;
+  --table-bg-primary: #f3f3f3;
 
   /* text color */
   --text-color-primary: #3c3c3c;

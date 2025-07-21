@@ -2,23 +2,29 @@ import SearchBar from "../searchBar/SearchBar";
 import "./DatatbaseListPanel.css";
 import Checkbox from "@mui/material/Checkbox";
 import warning from "../../assets/icons/warning.svg";
+import FormPanel from "../formPanel/FormPanel";
 
-const DatatbaseListPanel = () => {
+interface DatatbaseListPanelProps {
+  selectedTab: string;
+}
+const DatatbaseListPanel = ({ selectedTab }: DatatbaseListPanelProps) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   return (
-    <div className="databaseListPanel-container">
-      <div className="databaseListPanel-checkbox-search">
-        <div className="databaseListPanel-header">
-          <div className="databaseListPanel-all-checkbox">
-            <Checkbox {...label} />
-            <p>Check all</p>
+    <>
+      <FormPanel panelName="Create Database" selectedTab={selectedTab} />
+      <div className="databaseListPanel-container">
+        <div className="databaseListPanel-checkbox-search">
+          <div className="databaseListPanel-header">
+            <div className="databaseListPanel-all-checkbox">
+              <Checkbox {...label} />
+              <p>Check all</p>
+            </div>
+            <p>Drop</p>
           </div>
-          <p>Drop</p>
+          <SearchBar />
         </div>
-        <SearchBar />
-      </div>
-      <div>
+
         <table className="databaseListPanel-table">
           <thead className="databaseListPanel-table-header">
             <tr>
@@ -93,20 +99,19 @@ const DatatbaseListPanel = () => {
             {/* Add more rows as needed */}
           </tbody>
         </table>
-      </div>
 
-      <div className="databaseListPanel-checkbox-search">
-        <div className="databaseListPanel-header">Total: 5</div>
-        <SearchBar />
+        <div className="databaseListPanel-total-database">Total: 5</div>
+
+        <div className="databaseListPanel-warning-container">
+          <img src={warning} alt="warning" />
+          <p className="databaseListPanel-warning-text">
+            Note: Enabling the database statistics here might cause heavy
+            traffic between the web server and the ONQL server.
+          </p>
+        </div>
+        <p>Enable statistics</p>
       </div>
-      <div>
-        <img src={warning} alt="warning" />
-        <p>
-          Note: Enabling the database statistics here might cause heavy traffic
-          between the web server and the ONQL server.
-        </p>
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,12 @@
+.form-button {
+  border-radius: 6px;
+  background-color: var(--sidebar-bg-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.form-button:hover {
+  background-color: #2f4357;
+}
