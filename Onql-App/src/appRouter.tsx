@@ -3,7 +3,8 @@ import ServerView from "./pages/serverView/ServerView";
 import ProtocolView from "./pages/protocolView/ProtocolView";
 import App from "./App";
 import DatabasePanel from "./components/databasePanel/DatabasePanel";
-import Table7Columns from "./components/table7Columns/Table7Columns";
+import ProtocolTable from "./pages/protocolTable/ProtocolTable";
+import ProtocolColumn from "./pages/protocolColumn/ProtocolColumn";
 
 export const appRouter = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: "/protocol-table",
-        element: <Table7Columns headingCol1={"Table"} />,
+        element: <ProtocolTable />,
+      },
+      {
+        path: "/protocol-column",
+        element: <ProtocolColumn />,
       },
     ],
   },

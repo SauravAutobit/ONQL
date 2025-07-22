@@ -1,14 +1,14 @@
 import "./Table7Columns.css";
 import { Link } from "react-router-dom";
-import Checkbox from "@mui/material/Checkbox";
 import star from "../../assets/icons/star.svg";
+import CheckBox from "../checkBox/CheckBox";
+import tableArrow from "../../assets/icons/tableArrow.svg";
 
-interface Table3ColumnsProps {
+interface Table7ColumnsProps {
   headingCol1: string;
 }
-const Table7Columns = ({ headingCol1 }: Table3ColumnsProps) => {
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
+const Table7Columns = ({ headingCol1 }: Table7ColumnsProps) => {
   return (
     <>
       <table className="table7Columns-table">
@@ -17,7 +17,6 @@ const Table7Columns = ({ headingCol1 }: Table3ColumnsProps) => {
             <th></th>
             <th className="table7Columns-table-header-name">{headingCol1}</th>
             <th className="table7Columns-table-header-name">Action</th>
-
             <th className="table7Columns-table-header-name">Row</th>
             <th className="table7Columns-table-header-name">Type</th>
             <th className="table7Columns-table-header-name">Collation</th>
@@ -26,22 +25,21 @@ const Table7Columns = ({ headingCol1 }: Table3ColumnsProps) => {
           </tr>
         </thead>
         <tbody>
-          <tr className="table7Columns-table-row">
-            <td>
-              <Checkbox {...label} />
+          <tr>
+            <td style={{ padding: "10px 16px" }}>
+              <CheckBox />
             </td>
-
-            <td style={{ fontWeight: "600" }}>
-              <Link to="/protocol-database">test_db</Link>
+            <td className="bold-link">
+              <Link to="/protocol-column">test_db</Link>
             </td>
-            <td className="table7Columns-table-collations action">
-              <img src={star} alt="star" />
-              <p>Browser</p>
-              <p>Structure</p>
-              <p>Search</p>
-              <p>Insert</p>
-              <p>Empty</p>
-              <p>Drop</p>
+            <td className="table7Columns-table-actions action">
+              <img src={star} alt="star" className="star-icon" />
+              <span>Browser</span>
+              <span>Structure</span>
+              <span>Search</span>
+              <span>Insert</span>
+              <span>Empty</span>
+              <span>Drop</span>
             </td>
             <td className="table7Columns-table-actions">0</td>
             <td className="table7Columns-table-actions">InnoDB</td>
@@ -50,10 +48,36 @@ const Table7Columns = ({ headingCol1 }: Table3ColumnsProps) => {
             <td className="table7Columns-table-actions">0 B</td>
           </tr>
 
-          {/* Add more rows as needed */}
+          <tr>
+            <td style={{ padding: "10px 16px" }}></td>
+            <td className="bold-link">
+              <Link to="/protocol-database">1 table</Link>
+            </td>
+            <td
+              className="table7Columns-table-actions action"
+              style={{ fontWeight: "600" }}
+            >
+              Sum
+            </td>
+            <td className="table7Columns-table-actions bold-data">0</td>
+            <td className="table7Columns-table-actions bold-data">InnoDB</td>
+            <td className="table7Columns-table-actions bold-data">
+              utf8mb4_general_ci
+            </td>
+            <td className="table7Columns-table-actions bold-data">16.0 Kib</td>
+            <td className="table7Columns-table-actions bold-data">0 B</td>
+          </tr>
+
+          <tr>
+            <td style={{ padding: "10px 0 10px 16px" }}>
+              <img src={tableArrow} alt="expand" className="check-all-arrow" />
+            </td>
+            <td className="bold-link">
+              <Link to="/protocol-database">Check all</Link>
+            </td>
+          </tr>
         </tbody>
       </table>
-      <div className="table7Columns-total-database">Total: 5</div>
     </>
   );
 };
