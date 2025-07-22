@@ -22,7 +22,7 @@ import backArrow from "../../assets/icons/backArrow.svg";
 import Collapse from "react-bootstrap/Collapse";
 // import { Fade } from "react-bootstrap";
 import add from "../../assets/icons/add.svg";
-import ServerView from "../../pages/serverView/ServerView";
+import { Link, Outlet } from "react-router-dom";
 
 // --- Control the widths here ---
 const iconAreaWidth = 71;
@@ -114,22 +114,26 @@ const Sidebar = () => {
         >
           {/* --- This is your Icon Area --- */}
           <div className="icon-strip">
-            <div
-              className={
-                selectedIcon === 0 ? "image-border" : "image-no-border"
-              }
-              onClick={() => handleDrawerOpen(0)}
-            >
-              <img src={database} alt="database" />
-            </div>
-            <div
-              className={
-                selectedIcon === 1 ? "image-border" : "image-no-border"
-              }
-              onClick={() => handleDrawerOpen(1)}
-            >
-              <img src={protocol} alt="protocol" />
-            </div>
+            <Link to="/">
+              <div
+                className={
+                  selectedIcon === 0 ? "image-border" : "image-no-border"
+                }
+                onClick={() => handleDrawerOpen(0)}
+              >
+                <img src={database} alt="database" />
+              </div>
+            </Link>
+            <Link to="/protocol">
+              <div
+                className={
+                  selectedIcon === 1 ? "image-border" : "image-no-border"
+                }
+                onClick={() => handleDrawerOpen(1)}
+              >
+                <img src={protocol} alt="protocol" />
+              </div>
+            </Link>
             <div
               className={
                 selectedIcon === 2 ? "image-border" : "image-no-border"
@@ -228,7 +232,7 @@ const Sidebar = () => {
 
       {/* Main content now correctly moves with the sidebar */}
       <Main open={open}>
-        <ServerView />
+        <Outlet />
       </Main>
     </Box>
   );

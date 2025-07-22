@@ -1,7 +1,12 @@
+import ProtocolsPanel from "../../components/protocolsPanel/ProtocolsPanel";
 import "./ProtocolView.css";
 
 const ProtocolView = () => {
-  return <div>ProtocolView</div>;
+  return (
+    <>
+      <ProtocolsPanel heading={"Protocols"} />
+    </>
+  );
 };
 
 export default ProtocolView;

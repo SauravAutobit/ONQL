@@ -1,0 +1,35 @@
+.table3Columns-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 10px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  /* border: 1px solid #e0e0e0; */
+}
+
+.table3Columns-table-header {
+  background-color: var(--sidebar-bg-primary);
+  height: 40px;
+  color: var(--text-color-tertiary);
+}
+
+.table3Columns-table-header-name {
+  font-weight: var(--font-weight-tertiary);
+}
+
+.table3Columns-table-row {
+  background-color: var(--table-bg-primary);
+}
+
+.table3Columns-table-actions {
+  color: #226899;
+}
+.table3Columns-table-collations {
+  color: var(--text-color-secondary);
+}
+
+.table3Columns-total-database {
+  font-weight: var(--font-weight-tertiary);
+  margin: 20px 0 30px 0;
+}

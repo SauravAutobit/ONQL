@@ -3,6 +3,8 @@ import QueryEditor from "../queryEditor/QueryEditor";
 import Checkbox from "@mui/material/Checkbox";
 
 import "./FormPanel.css";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 interface FormPanelProps {
   panelName: string;
@@ -10,11 +12,16 @@ interface FormPanelProps {
 }
 const FormPanel = ({ panelName, selectedTab }: FormPanelProps) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
+  const { pathname } = useLocation();
+
+  const [selectedDatabase, setSelectedDatabase] = useState("");
+
   return (
     <div className="form-panel">
       <p className="form-panel-label">{panelName}</p>
 
-      {selectedTab === "Database" && (
+      {selectedTab === "Database" && pathname === "/" && (
         <div className="form-panel-fields">
           <div className="form-panel-options">
             <input
@@ -126,6 +133,48 @@ const FormPanel = ({ panelName, selectedTab }: FormPanelProps) => {
           <div style={{ marginTop: "27px" }}>
             <Button btnText="Export" width={100} padding={"6px 20px"} />
           </div>
+        </div>
+      )}
+
+      {selectedTab === "Protocols" && (
+        <div className="form-panel-fields" style={{ gap: "10px" }}>
+          <div className="form-panel-options">
+            <input
+              type="text"
+              placeholder="Protocol alias"
+              className="form-input"
+              style={{ width: "100%" }}
+            />
+          </div>
+
+          <Button btnText="Create new protocol" width={143} />
+        </div>
+      )}
+
+      {selectedTab === "Database" && pathname === "/protocol-database" && (
+        <div className="form-panel-fields">
+          <div className="form-panel-options">
+            <input
+              type="text"
+              placeholder="Database alias"
+              className="form-input"
+            />
+
+            <select
+              className="form-select"
+              value={selectedDatabase}
+              onChange={(e) => setSelectedDatabase(e.target.value)}
+            >
+              <option value="" disabled>
+                Select Database
+              </option>
+              <option value="Database 1">Database 1</option>
+              <option value="Database 2">Database 2</option>
+              <option value="Database 3">Database 3</option>
+            </select>
+          </div>
+
+          <Button btnText="Add new database" />
         </div>
       )}
     </div>
