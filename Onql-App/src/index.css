@@ -86,6 +86,7 @@ button:focus-visible {
   --text-color-primary: #3c3c3c;
   --text-color-secondary: #8d8d8d;
   --text-color-tertiary: #ffffff;
+  --text-color-quaternary: #0032c7;
 
   /* border color */
   --border-color-primary: #e3e3e3;

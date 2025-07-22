@@ -6,11 +6,27 @@ import "./FormPanel.css";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
+interface AddColumn {
+  alias: string;
+  column: string;
+  show: boolean;
+}
+
 interface FormPanelProps {
   panelName: string;
   selectedTab: string;
+  addColumn?: AddColumn;
+  setAddColumn?: React.Dispatch<React.SetStateAction<AddColumn>>;
+  handleAddColumn?: () => void;
 }
-const FormPanel = ({ panelName, selectedTab }: FormPanelProps) => {
+
+const FormPanel = ({
+  panelName,
+  selectedTab,
+  addColumn,
+  setAddColumn,
+  handleAddColumn,
+}: FormPanelProps) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   const { pathname } = useLocation();
@@ -205,19 +221,36 @@ const FormPanel = ({ panelName, selectedTab }: FormPanelProps) => {
         </div>
       )}
 
-      {selectedTab === "Add Column" && (
+      {selectedTab === "Add Column" && addColumn && setAddColumn && (
         <div className="form-panel-fields">
           <div className="form-panel-options">
             <input
               type="text"
               placeholder="Column alias"
               className="form-input"
+              value={addColumn.alias}
+              onChange={(e) =>
+                setAddColumn((prev) => {
+                  return {
+                    ...prev,
+                    alias: e.target.value,
+                  };
+                })
+              }
             />
 
             <select
               className="form-select"
               value={selectedDatabase}
-              onChange={(e) => setSelectedDatabase(e.target.value)}
+              onChange={(e) => {
+                setSelectedDatabase(e.target.value);
+                setAddColumn((prev) => {
+                  return {
+                    ...prev,
+                    column: e.target.value,
+                  };
+                });
+              }}
             >
               <option value="" disabled>
                 Select Column
@@ -228,7 +261,7 @@ const FormPanel = ({ panelName, selectedTab }: FormPanelProps) => {
             </select>
           </div>
 
-          <Button btnText="Add Column" width={109} />
+          <Button btnText="Add Column" width={109} onClick={handleAddColumn} />
         </div>
       )}
     </div>
