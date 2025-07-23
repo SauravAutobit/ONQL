@@ -1,0 +1,55 @@
+.extension-header-bg {
+  background-color: var(--header-bg-primary);
+  border: 1px solid var(--border-color-primary);
+  height: 43px;
+  padding: 5px 10px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.extension-header-add-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background-color: var(--header-bg-primary);
+  border: 0.5px solid var(--border-color-primary);
+  box-shadow: 0px 0px 4px 0px #00000040;
+  cursor: pointer;
+}
+
+.extension-header-server-container {
+  width: 152px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 0.5px solid var(--border-color-quaternary);
+  box-shadow: 0px 0px 4px 0px #00000026;
+  padding: 4px 13px 4px 10px;
+  border-radius: 6px;
+  background-color: var(--header-bg-primary);
+  cursor: pointer;
+}
+
+.extension-header-server-text {
+  font-size: var(--font-size-primary);
+  color: var(--text-color-primary);
+}
+
+.extension-header-server-port {
+  color: var(--text-color-secondary);
+}
+
+.extension-header-server-iconText {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.extension-header-bg .css-1n1qkn4,
+.extension-header-bg .css-1xsoqrb {
+  padding: 0 !important;
+}

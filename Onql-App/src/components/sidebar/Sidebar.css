@@ -31,6 +31,10 @@
   align-items: end;
 }
 
+.options-panel.sidebar-extensions {
+  align-items: normal;
+}
+
 .options-panel.is-open {
   opacity: 1;
 }
@@ -76,6 +80,18 @@
   border-bottom: 0; */
 }
 
+.sidebar-option-container.extensions-open {
+  background-color: var(--sidebar-bg-primary);
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.sidebar-option-container.extensions-container {
+  border-bottom: 1px solid var(--border-color-primary);
+  border-radius: 4px;
+  padding: 4px 6px;
+}
+
 .sidebar-option-iconText {
   display: flex;
   align-items: center;
@@ -107,6 +123,14 @@
   font-family: var(--font-family-primary);
 }
 
+.sidebar-option-text.extensions-text {
+  color: var(--sidebar-bg-primary);
+}
+
+.sidebar-option-text.extensions-text-open {
+  color: var(--background-color-primary);
+}
+
 .sidebar-database-btn {
   width: 223px;
   height: 38px;
@@ -125,10 +149,9 @@
   font-size: var(--font-size-primary);
 }
 
-
 .dropdown-collapse-container {
   width: 100%;
-  /* height: 82px; */
+  /* height: 375px; */
   /* border: 1px solid var(--border-color-tertiary);
   border-top: 0; */
   border-radius: 6px;
@@ -144,8 +167,57 @@
   color: var(--text-color-secondary);
 }
 
+.dropdown-collapse-container.extensions-container {
+  /* padding: 6px; */
+  padding: 0;
+  border-bottom: 1px solid var(--border-color-primary);
+  height: 375px;
+  display: block;
+  overflow: scroll;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  background-color: #f2faff;
+}
+
 .sidebar-option-recent {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.sidebar-extensions-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-search-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 10px 0;
+}
+
+.sidebar-extensions-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color-primary);
+  padding: 6px;
+}
+
+.sidebar-extensions-name {
+  font-weight: var(--font-weight-tertiary);
+}
+
+.sidebar-extensions-description {
+  font-weight: var(--font-weight-secondary);
+  color: var(--text-color-secondary);
+}
+
+.sidebar-extensions-corporation {
+  font-size: 10px;
+  font-weight: var(--font-weight-secondary);
+  margin-top: 10px;
 }

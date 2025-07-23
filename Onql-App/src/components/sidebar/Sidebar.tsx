@@ -19,10 +19,21 @@ import downArrow from "../../assets/icons/downArrow.svg";
 import star from "../../assets/icons/star.svg";
 import backArrow from "../../assets/icons/backArrow.svg";
 
-import Collapse from "react-bootstrap/Collapse";
+// import Collapse from "react-bootstrap/Collapse";
 // import { Fade } from "react-bootstrap";
 import add from "../../assets/icons/add.svg";
 import { Link, Outlet } from "react-router-dom";
+import SearchBar from "../searchBar/SearchBar";
+import extensionOption from "../../assets/icons/extensionOption.svg";
+import Collapse from "@mui/material/Collapse";
+import rightArrow from "../../assets/icons/rightArrow.svg";
+import downArrowWhite from "../../assets/icons/downArrowWhite.svg";
+import chatGpt from "../../assets/icons/chatGpt.svg";
+import pinterest from "../../assets/icons/pinterest.svg";
+import chrome from "../../assets/icons/chrome.svg";
+import insta from "../../assets/icons/insta.svg";
+import fb from "../../assets/icons/fb.svg";
+import upArrow from "../../assets/icons/upArrow.svg";
 
 // --- Control the widths here ---
 const iconAreaWidth = 71;
@@ -87,8 +98,11 @@ const Sidebar = () => {
   const [selectedIcon, setSelectedIcon] = React.useState(0);
   const [open, setOpen] = React.useState(true);
 
-  const [dropDownOpen, setDropDownOpen] = React.useState(false);
-  //
+  const [dropDownOpen, setDropDownOpen] = React.useState({
+    open: false,
+    option: "installed",
+  });
+
   const handleDrawerOpen = (index: number) => {
     setOpen(true);
     setSelectedIcon(index);
@@ -145,88 +159,520 @@ const Sidebar = () => {
           </div>
 
           {/* --- This is your Options Area (yellow background) --- */}
-          <div className={`options-panel ${open ? "is-open" : ""}`}>
-            {/* <IconButton
+          {selectedIcon === 0 || selectedIcon === 1 ? (
+            <div className={`options-panel ${open ? "is-open" : ""}`}>
+              {/* <IconButton
               onClick={handleDrawerClose}
               // sx={{ position: "absolute", top: 0, right: 0 }}
             > */}
 
+              <div
+                className="sidebar-option-backArrow"
+                onClick={handleDrawerClose}
+              >
+                <img src={backArrow} alt="backArrow" />
+              </div>
+              {/* </IconButton> */}
+
+              <img
+                src={logo}
+                alt="logo"
+                style={{ alignSelf: "center", padding: "10px" }}
+              />
+
+              <div
+                className={
+                  dropDownOpen.open && dropDownOpen.option === "recent"
+                    ? "sidebar-option-container open"
+                    : "sidebar-option-container"
+                }
+                onClick={() =>
+                  setDropDownOpen((prev) => {
+                    return {
+                      ...prev,
+                      open:
+                        dropDownOpen.option !== "recent"
+                          ? true
+                          : !dropDownOpen.open,
+                      option: "recent",
+                    };
+                  })
+                }
+                // aria-controls="example-collapse-text"
+                aria-controls="example-fade-text"
+                aria-expanded={dropDownOpen.open}
+              >
+                <div className="sidebar-option-iconText">
+                  <img src={recentWatch} alt="recentWatch" />
+                  <p className="sidebar-option-text">Recent</p>
+                </div>
+                <img
+                  src={
+                    dropDownOpen.open && dropDownOpen.option === "recent"
+                      ? upArrow
+                      : downArrow
+                  }
+                  alt="downArrow"
+                />
+              </div>
+
+              <Collapse
+                in={dropDownOpen.open && dropDownOpen.option === "recent"}
+              >
+                <div
+                  // id="example-collapse-text"
+                  id="example-fade-text"
+                  className="dropdown-collapse-container"
+                >
+                  No Database
+                </div>
+              </Collapse>
+
+              <div
+                className={
+                  dropDownOpen.open && dropDownOpen.option === "favourites"
+                    ? "sidebar-option-container open"
+                    : "sidebar-option-container"
+                }
+                onClick={() =>
+                  setDropDownOpen((prev) => {
+                    return {
+                      ...prev,
+                      open:
+                        dropDownOpen.option !== "favourites"
+                          ? true
+                          : !dropDownOpen.open,
+                      option: "favourites",
+                    };
+                  })
+                }
+              >
+                <div className="sidebar-option-iconText">
+                  <img src={star} alt="star" />
+                  <p className="sidebar-option-text">Favourites</p>
+                </div>
+                <img
+                  src={
+                    dropDownOpen.open && dropDownOpen.option === "favourites"
+                      ? upArrow
+                      : downArrow
+                  }
+                  alt="downArrow"
+                />
+              </div>
+
+              <Collapse
+                in={dropDownOpen.open && dropDownOpen.option === "favourites"}
+                timeout="auto"
+                unmountOnExit
+              >
+                <div
+                  // id="example-collapse-text"
+                  id="example-fade-text"
+                  className="dropdown-collapse-container"
+                >
+                  No Database
+                </div>
+              </Collapse>
+
+              <div
+                className="sidebar-database-btn"
+                style={{ alignSelf: "center" }}
+              >
+                <img src={database} alt="database" width="12px" />
+                Create New Database
+                <img src={add} alt="add" />
+              </div>
+            </div>
+          ) : (
             <div
-              className="sidebar-option-backArrow"
+              className={`options-panel ${
+                open ? "is-open" : ""
+              } sidebar-extensions`}
+            >
+              {/* <IconButton
               onClick={handleDrawerClose}
-            >
-              <img src={backArrow} alt="backArrow" />
-            </div>
-            {/* </IconButton> */}
-
-            <img
-              src={logo}
-              alt="logo"
-              style={{ alignSelf: "center", padding: "10px" }}
-            />
-
-            <div
-              className={
-                dropDownOpen
-                  ? "sidebar-option-container open"
-                  : "sidebar-option-container"
-              }
-              onClick={() => setDropDownOpen(!dropDownOpen)}
-              // aria-controls="example-collapse-text"
-              aria-controls="example-fade-text"
-              aria-expanded={dropDownOpen}
-            >
-              <div className="sidebar-option-iconText">
-                <img src={recentWatch} alt="recentWatch" />
-                <p className="sidebar-option-text">Recent</p>
+              // sx={{ position: "absolute", top: 0, right: 0 }}
+            > */}
+              <div className="sidebar-extensions-heading">
+                Extensions
+                <div
+                  className="sidebar-option-backArrow"
+                  onClick={handleDrawerClose}
+                >
+                  <img src={backArrow} alt="backArrow" />
+                </div>
+              </div>{" "}
+              <div className="sidebar-search-container">
+                <SearchBar
+                  width="100%"
+                  background={"var(--sidebar-bg-secondary)"}
+                  border="1px solid var(--text-color-secondary)"
+                  placeholder={"Search Extension"}
+                />
+                <img src={extensionOption} alt="extensionOption" />
               </div>
-              <img src={downArrow} alt="downArrow" />
-            </div>
-
-            <Collapse in={dropDownOpen}>
+              {/* </IconButton> */}
               <div
-                // id="example-collapse-text"
-                id="example-fade-text"
-                className="dropdown-collapse-container"
+                className={
+                  dropDownOpen.open && dropDownOpen.option === "installed"
+                    ? "sidebar-option-container extensions-open"
+                    : "sidebar-option-container extensions-container"
+                }
+                onClick={() =>
+                  setDropDownOpen((prev) => {
+                    return {
+                      ...prev,
+                      open:
+                        dropDownOpen.option !== "installed"
+                          ? true
+                          : !dropDownOpen.open,
+                      option: "installed",
+                    };
+                  })
+                }
+                // aria-controls="example-collapse-text"
+                aria-controls="example-fade-text"
+                aria-expanded={dropDownOpen.open}
               >
-                No Database
+                <div className="sidebar-option-iconText">
+                  <img
+                    src={
+                      dropDownOpen.open && dropDownOpen.option === "installed"
+                        ? downArrowWhite
+                        : rightArrow
+                    }
+                    alt="rightArrow"
+                  />
+                  <p
+                    className={
+                      dropDownOpen.open && dropDownOpen.option === "installed"
+                        ? "sidebar-option-text extensions-text-open"
+                        : "sidebar-option-text extensions-text"
+                    }
+                  >
+                    Installed
+                  </p>
+                </div>
               </div>
-            </Collapse>
-
-            <div
-              className={
-                dropDownOpen
-                  ? "sidebar-option-container open"
-                  : "sidebar-option-container"
-              }
-              onClick={() => setDropDownOpen(!dropDownOpen)}
-            >
-              <div className="sidebar-option-iconText">
-                <img src={star} alt="star" />
-                <p className="sidebar-option-text">Favourites</p>
-              </div>
-              <img src={downArrow} alt="downArrow" />
-            </div>
-
-            <Collapse in={dropDownOpen}>
+              <Collapse
+                in={dropDownOpen.open && dropDownOpen.option === "installed"}
+                timeout="auto"
+                unmountOnExit
+              >
+                <div className="dropdown-collapse-container extensions-container">
+                  <Link to="/extension-details">
+                    <div className="sidebar-extensions-container">
+                      <img src={chatGpt} alt="chatGpt" />
+                      <div>
+                        <p className="sidebar-extensions-name">Chat GPT</p>
+                        <p className="sidebar-extensions-description">
+                          Extension Summary Desc...
+                        </p>
+                        <p className="sidebar-extensions-corporation">
+                          Chat GPT Corporation
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                  <div className="sidebar-extensions-container">
+                    <img src={pinterest} alt="pinterest" />
+                    <div>
+                      <p className="sidebar-extensions-name">Pinterest Ext.</p>
+                      <p className="sidebar-extensions-description">
+                        Extension Summary Desc...
+                      </p>
+                      <p className="sidebar-extensions-corporation">
+                        Pinterest Corporation
+                      </p>
+                    </div>
+                  </div>
+                  <div className="sidebar-extensions-container">
+                    <img src={chrome} alt="chrome" />
+                    <div>
+                      <p className="sidebar-extensions-name">
+                        Chrome Extension
+                      </p>
+                      <p className="sidebar-extensions-description">
+                        Extension Summary Desc...
+                      </p>
+                      <p className="sidebar-extensions-corporation">
+                        Chrome Corporation
+                      </p>
+                    </div>
+                  </div>
+                  <div className="sidebar-extensions-container">
+                    <img src={insta} alt="insta" />
+                    <div>
+                      <p className="sidebar-extensions-name">
+                        Instagram Extension
+                      </p>
+                      <p className="sidebar-extensions-description">
+                        Extension Summary Desc...
+                      </p>
+                      <p className="sidebar-extensions-corporation">
+                        Meta Corporation
+                      </p>
+                    </div>
+                  </div>
+                  <div className="sidebar-extensions-container">
+                    <img src={fb} alt="fb" />
+                    <div>
+                      <p className="sidebar-extensions-name">
+                        Facebook Extension
+                      </p>
+                      <p className="sidebar-extensions-description">
+                        Extension Summary Desc...
+                      </p>
+                      <p className="sidebar-extensions-corporation">
+                        Meta Corporation
+                      </p>
+                    </div>
+                  </div>
+                  <div className="sidebar-extensions-container">
+                    <img src={insta} alt="insta" />
+                    <div>
+                      <p className="sidebar-extensions-name">
+                        Instagram Extension
+                      </p>
+                      <p className="sidebar-extensions-description">
+                        Extension Summary Desc...
+                      </p>
+                      <p className="sidebar-extensions-corporation">
+                        Meta Corporation
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Collapse>
               <div
-                // id="example-collapse-text"
-                id="example-fade-text"
-                className="dropdown-collapse-container"
+                className={
+                  dropDownOpen.open && dropDownOpen.option === "enabled"
+                    ? "sidebar-option-container extensions-open"
+                    : "sidebar-option-container extensions-container"
+                }
+                onClick={() =>
+                  setDropDownOpen((prev) => {
+                    return {
+                      ...prev,
+                      open:
+                        dropDownOpen.option !== "enabled"
+                          ? true
+                          : !dropDownOpen.open,
+                      option: "enabled",
+                    };
+                  })
+                }
+                // aria-controls="example-collapse-text"
+                aria-controls="example-fade-text"
+                aria-expanded={dropDownOpen.open}
               >
-                No Database
+                <div className="sidebar-option-iconText">
+                  <img
+                    src={
+                      dropDownOpen.open && dropDownOpen.option === "enabled"
+                        ? downArrowWhite
+                        : rightArrow
+                    }
+                    alt="rightArrow"
+                  />
+                  <p
+                    className={
+                      dropDownOpen.open && dropDownOpen.option === "enabled"
+                        ? "sidebar-option-text extensions-text-open"
+                        : "sidebar-option-text extensions-text"
+                    }
+                  >
+                    Enabled
+                  </p>
+                </div>
               </div>
-            </Collapse>
-
-            <div
-              className="sidebar-database-btn"
-              style={{ alignSelf: "center" }}
-            >
-              <img src={database} alt="database" width="12px" />
-              Create New Database
-              <img src={add} alt="add" />
+              <Collapse
+                in={dropDownOpen.open && dropDownOpen.option === "enabled"}
+                timeout="auto"
+                unmountOnExit
+              >
+                <div className="dropdown-collapse-container extensions-container">
+                  <div className="sidebar-extensions-container">
+                    <img src={chatGpt} alt="chatGpt" />
+                    <div>
+                      <p className="sidebar-extensions-name">Chat GPT</p>
+                      <p className="sidebar-extensions-description">
+                        Extension Summary Desc...
+                      </p>
+                      <p className="sidebar-extensions-corporation">
+                        Chat GPT Corporation
+                      </p>
+                    </div>
+                  </div>
+                  <div className="sidebar-extensions-container">
+                    <img src={pinterest} alt="pinterest" />
+                    <div>
+                      <p className="sidebar-extensions-name">Pinterest Ext.</p>
+                      <p className="sidebar-extensions-description">
+                        Extension Summary Desc...
+                      </p>
+                      <p className="sidebar-extensions-corporation">
+                        Pinterest Corporation
+                      </p>
+                    </div>
+                  </div>
+                  <div className="sidebar-extensions-container">
+                    <img src={chrome} alt="chrome" />
+                    <div>
+                      <p className="sidebar-extensions-name">
+                        Chrome Extension
+                      </p>
+                      <p className="sidebar-extensions-description">
+                        Extension Summary Desc...
+                      </p>
+                      <p className="sidebar-extensions-corporation">
+                        Chrome Corporation
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Collapse>
+              <div
+                className={
+                  dropDownOpen.open && dropDownOpen.option === "disabled"
+                    ? "sidebar-option-container extensions-open"
+                    : "sidebar-option-container extensions-container"
+                }
+                onClick={() =>
+                  setDropDownOpen((prev) => {
+                    return {
+                      ...prev,
+                      open:
+                        dropDownOpen.option !== "disabled"
+                          ? true
+                          : !dropDownOpen.open,
+                      option: "disabled",
+                    };
+                  })
+                }
+                // aria-controls="example-collapse-text"
+                aria-controls="example-fade-text"
+                aria-expanded={dropDownOpen.open}
+              >
+                <div className="sidebar-option-iconText">
+                  <img
+                    src={
+                      dropDownOpen.open && dropDownOpen.option === "disabled"
+                        ? downArrowWhite
+                        : rightArrow
+                    }
+                    alt="rightArrow"
+                  />
+                  <p
+                    className={
+                      dropDownOpen.open && dropDownOpen.option === "disabled"
+                        ? "sidebar-option-text extensions-text-open"
+                        : "sidebar-option-text extensions-text"
+                    }
+                  >
+                    Disabled
+                  </p>
+                </div>
+              </div>
+              <Collapse
+                in={dropDownOpen.open && dropDownOpen.option === "disabled"}
+                timeout="auto"
+                unmountOnExit
+              >
+                <div className="dropdown-collapse-container extensions-container">
+                  <div className="sidebar-extensions-container">
+                    <img src={chatGpt} alt="chatGpt" />
+                    <div>
+                      <p className="sidebar-extensions-name">Chat GPT</p>
+                      <p className="sidebar-extensions-description">
+                        Extension Summary Desc...
+                      </p>
+                      <p className="sidebar-extensions-corporation">
+                        Chat GPT Corporation
+                      </p>
+                    </div>
+                  </div>
+                  <div className="sidebar-extensions-container">
+                    <img src={insta} alt="insta" />
+                    <div>
+                      <p className="sidebar-extensions-name">
+                        Instagram Extension
+                      </p>
+                      <p className="sidebar-extensions-description">
+                        Extension Summary Desc...
+                      </p>
+                      <p className="sidebar-extensions-corporation">
+                        Meta Corporation
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Collapse>
+              <div
+                className={
+                  dropDownOpen.open && dropDownOpen.option === "recommended"
+                    ? "sidebar-option-container extensions-open"
+                    : "sidebar-option-container extensions-container"
+                }
+                onClick={() =>
+                  setDropDownOpen((prev) => {
+                    return {
+                      ...prev,
+                      open:
+                        dropDownOpen.option !== "recommended"
+                          ? true
+                          : !dropDownOpen.open,
+                      option: "recommended",
+                    };
+                  })
+                }
+                // aria-controls="example-collapse-text"
+                aria-controls="example-fade-text"
+                aria-expanded={dropDownOpen.open}
+              >
+                <div className="sidebar-option-iconText">
+                  <img
+                    src={
+                      dropDownOpen.open && dropDownOpen.option === "recommended"
+                        ? downArrowWhite
+                        : rightArrow
+                    }
+                    alt="rightArrow"
+                  />
+                  <p
+                    className={
+                      dropDownOpen.open && dropDownOpen.option === "recommended"
+                        ? "sidebar-option-text extensions-text-open"
+                        : "sidebar-option-text extensions-text"
+                    }
+                  >
+                    Recommended
+                  </p>
+                </div>
+              </div>
+              <Collapse
+                in={dropDownOpen.open && dropDownOpen.option === "recommended"}
+                timeout="auto"
+                unmountOnExit
+              >
+                <div className="dropdown-collapse-container extensions-container">
+                  <div className="sidebar-extensions-container">
+                    <img src={chatGpt} alt="chatGpt" />
+                    <div>
+                      <p className="sidebar-extensions-name">Chat GPT</p>
+                      <p className="sidebar-extensions-description">
+                        Extension Summary Desc...
+                      </p>
+                      <p className="sidebar-extensions-corporation">
+                        Chat GPT Corporation
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Collapse>
             </div>
-          </div>
+          )}
         </div>
       </Drawer>
 

@@ -92,6 +92,7 @@ button:focus-visible {
   --border-color-primary: #e3e3e3;
   --border-color-secondary: #ebebeb;
   --border-color-tertiary: #e7e7e7;
+  --border-color-quaternary: #8d8d8d;
 
   /* Font family */
   --font-family-primary: Poppins;

@@ -5,6 +5,7 @@ import App from "./App";
 import DatabasePanel from "./components/databasePanel/DatabasePanel";
 import ProtocolTable from "./pages/protocolTable/ProtocolTable";
 import ProtocolColumn from "./pages/protocolColumn/ProtocolColumn";
+import ExtensionDetails from "./pages/extensionDetails/ExtensionDetails";
 
 export const appRouter = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/protocol-column",
         element: <ProtocolColumn />,
+      },
+      {
+        path: "/extension-details",
+        element: <ExtensionDetails />,
       },
     ],
   },
