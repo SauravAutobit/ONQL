@@ -32,6 +32,7 @@
   border-radius: 6px;
   background-color: var(--header-bg-primary);
   cursor: pointer;
+  /* opacity: 70%; */
 }
 
 .extension-header-server-text {

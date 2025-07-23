@@ -22,7 +22,7 @@ import backArrow from "../../assets/icons/backArrow.svg";
 // import Collapse from "react-bootstrap/Collapse";
 // import { Fade } from "react-bootstrap";
 import add from "../../assets/icons/add.svg";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
 import extensionOption from "../../assets/icons/extensionOption.svg";
 import Collapse from "@mui/material/Collapse";
@@ -112,6 +112,7 @@ const Sidebar = () => {
     setOpen(false);
   };
 
+  const { pathname } = useLocation();
   return (
     // REMOVED: display: "flex" is no longer needed here
     <Box>
@@ -677,7 +678,10 @@ const Sidebar = () => {
       </Drawer>
 
       {/* Main content now correctly moves with the sidebar */}
-      <Main open={open}>
+      <Main
+        open={open}
+        sx={{ padding: pathname === "/extension-details" ? "0" : "10px" }}
+      >
         <Outlet />
       </Main>
     </Box>
