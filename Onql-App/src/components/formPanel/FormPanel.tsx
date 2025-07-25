@@ -3,10 +3,13 @@ import QueryEditor from "../queryEditor/QueryEditor";
 import Checkbox from "@mui/material/Checkbox";
 
 import "./FormPanel.css";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import FileUploadInput from "../fileUploadInput/FileUploadInput";
 import ToggleButton from "../toggleButton/ToggleButton";
+import RadioButton from "../radioButton/RadioButton";
+import CheckBox from "../checkBox/CheckBox";
+import tableDownArrow from "../../assets/icons/tableDownArrow.svg";
 
 interface AddColumn {
   alias: string;
@@ -55,7 +58,9 @@ const FormPanel = ({
             </select>
           </div>
 
-          <Button btnText="Create new database" />
+          <Link to="/database-view">
+            <Button btnText="Create new database" />
+          </Link>
         </div>
       )}
 
@@ -65,13 +70,13 @@ const FormPanel = ({
           <div className="form-onqlPanel-btns">
             <Button
               btnText={"Clear"}
-              width={53}
+              width={100}
               height={30}
               padding={"6px 10px"}
             />
             <Button
               btnText={"Format"}
-              width={64}
+              width={100}
               height={30}
               padding={"6px 10px"}
             />
@@ -115,7 +120,7 @@ const FormPanel = ({
 
               <Button
                 btnText="Go"
-                width={58}
+                width={100}
                 height={30}
                 padding={"6px 20px"}
               />
@@ -321,7 +326,7 @@ const FormPanel = ({
 
       {selectedTab === "Import" && panelName === "Format" && (
         <>
-          <div className="formPanel-import-container">
+          <div className="formPanel-import-container format">
             <p>
               Skip this number of queries (for SQL) starting from the first one:{" "}
             </p>
@@ -331,6 +336,84 @@ const FormPanel = ({
               className="form-input import"
             />
           </div>
+        </>
+      )}
+
+      {selectedTab === "Structure" && panelName === "Create Table" && (
+        <div className="form-panel-fields">
+          <div className="form-panel-options">
+            <input
+              type="text"
+              placeholder="Table name"
+              className="form-input"
+            />
+
+            <input
+              type="text"
+              placeholder="Number of Column"
+              className="form-input"
+            />
+          </div>
+
+          <Button btnText="Create new table" />
+        </div>
+      )}
+
+      {selectedTab === "Structure" && panelName === "Filters" && (
+        <>
+          <div className="form-panel-options">
+            <p>Contain the word :</p>
+            <input
+              type="text"
+              className="form-input"
+              placeholder="Enter word"
+            />
+          </div>
+        </>
+      )}
+
+      {selectedTab === "Search" && (
+        <>
+          <div className="formPanel-import-container format">
+            <p>Words or values to search for (wildcard: "%"):</p>
+            <input type="text" placeholder="" className="form-input import" />
+          </div>
+          <div className="form-panel nested">
+            <p className="form-panel-label">Finds</p>
+            <div className="formPanel-radiobtn-container">
+              <RadioButton
+                name="searchType"
+                text={"at least one of the words"}
+              />
+              <RadioButton name="searchType" text={"all of the words"} />
+              <RadioButton
+                name="searchType"
+                text={"the exact phrase as substring"}
+              />
+              <RadioButton
+                name="searchType"
+                text={"the exact phrase as whole field"}
+              />
+              <RadioButton name="searchType" text={"as regular expression"} />
+            </div>
+          </div>
+
+          <div className="form-panel nested">
+            <p className="form-panel-label">Inside tables:</p>
+            <div className="form-panel-allCheckbox">
+              <img src={tableDownArrow} alt="tableDownArrow" />
+              <p className="form-panel-allCheckbox-text">Select all</p>
+              <p className="form-panel-allCheckbox-text">Unselect all</p>
+            </div>
+            <div className="formPanel-checkbox-container">
+              <CheckBox text="Blind parameter" />
+              <CheckBox text="Blind parameter" />
+              <CheckBox text="Blind parameter" />
+              <CheckBox text="Blind parameter" />
+              <CheckBox text="Blind parameter" />
+            </div>
+          </div>
+          <Button btnText={"Go"} width={100} height={30} padding={"6px 20px"} />
         </>
       )}
     </div>

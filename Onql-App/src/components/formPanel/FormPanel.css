@@ -7,6 +7,10 @@
   /* background-color: #fff; */
 }
 
+.form-panel.nested {
+  padding: 30px 25px;
+}
+
 .form-panel-label {
   position: absolute;
   top: -10px;
@@ -35,7 +39,7 @@
   padding: 10px;
   border: 1px solid var(--border-color-primary);
   border-radius: 6px;
-  background-color: var(--header-bg-primary);
+  background-color: var(--input-bg-primary);
   /* min-width: 200px; */
   outline: none;
   height: 38px;
@@ -101,6 +105,10 @@
   gap: 10px;
 }
 
+.formPanel-import-container.format {
+  margin: 0;
+}
+
 .form-select.import {
   width: 100%;
 }
@@ -113,4 +121,36 @@
 
 .form-input.import {
   width: 100%;
+}
+
+.formPanel-radiobtn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formPanel-checkbox-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--border-color-primary);
+  border-radius: 10px;
+  background-color: var(--header-bg-primary);
+  /* width: 352px; */
+  width: 32%;
+  padding: 16px 20px;
+}
+
+.form-panel-allCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 29px;
+padding-bottom: 20px;
+  /* margin-bottom: 20px; */
+}
+
+.form-panel-allCheckbox-text {
+  color: #0068c2;
+  text-decoration: underline;
 }

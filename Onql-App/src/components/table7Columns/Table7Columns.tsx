@@ -1,14 +1,17 @@
 import "./Table7Columns.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import star from "../../assets/icons/star.svg";
 import CheckBox from "../checkBox/CheckBox";
 import tableArrow from "../../assets/icons/tableArrow.svg";
+import Button from "../button/Button";
 
 interface Table7ColumnsProps {
   headingCol1: string;
 }
 
 const Table7Columns = ({ headingCol1 }: Table7ColumnsProps) => {
+  const { pathname } = useLocation();
+
   return (
     <>
       <table className="table7Columns-table">
@@ -75,6 +78,16 @@ const Table7Columns = ({ headingCol1 }: Table7ColumnsProps) => {
             <td className="bold-link">
               <Link to="/protocol-database">Check all</Link>
             </td>
+            {pathname === "/database-view" && (
+              <td>
+                <Button
+                  btnText={"Export Table"}
+                  width={113}
+                  height={30}
+                  padding={"6px 20px"}
+                />
+              </td>
+            )}
           </tr>
         </tbody>
       </table>

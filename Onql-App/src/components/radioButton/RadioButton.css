@@ -1,0 +1,11 @@
+.radio-btn {
+  width: 18px;
+  height: 18px;
+  accent-color: #47647a;
+}
+
+.radioButton-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
