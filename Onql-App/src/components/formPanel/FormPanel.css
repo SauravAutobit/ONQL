@@ -109,6 +109,10 @@
   margin: 0;
 }
 
+.formPanel-import-container.export {
+  margin-bottom: 20px;
+}
+
 .form-select.import {
   width: 100%;
 }
@@ -146,7 +150,7 @@
   align-items: center;
   gap: 20px;
   padding-left: 29px;
-padding-bottom: 20px;
+  padding-bottom: 20px;
   /* margin-bottom: 20px; */
 }
 
