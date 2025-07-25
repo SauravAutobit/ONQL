@@ -5,6 +5,9 @@ interface ButtonProps {
   width?: number;
   height?: number;
   padding?: number | string;
+  background?: string;
+  color?: string;
+  border?: string;
   onClick?: () => void;
 }
 const Button = ({
@@ -12,12 +15,18 @@ const Button = ({
   width = 152,
   height = 38,
   padding = 10,
+  background = "var(--sidebar-bg-primary)",
+  color = "white",
+  border = "none",
   onClick,
 }: ButtonProps) => {
   const styles = {
     width,
     height,
     padding,
+    background,
+    color,
+    border,
   };
 
   return (

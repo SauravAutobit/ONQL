@@ -4,6 +4,7 @@ import StructurePanel from "../../components/structurePanel/StructurePanel";
 import OnqlPanel from "../../components/onqlPanel/OnqlPanel";
 import SearchPanel from "../../components/searchPanel/SearchPanel";
 import ImportPanel from "../../components/importPanel/ImportPanel";
+import QueryPanel from "../../components/queryPanel/QueryPanel";
 
 const DatabaseView = () => {
   const [selectedTab, setSelectedTab] = useState("Structure");
@@ -29,6 +30,7 @@ const DatabaseView = () => {
 
       {selectedTab === "ONQL" && <OnqlPanel selectedTab={selectedTab} />}
       {selectedTab === "Search" && <SearchPanel selectedTab={selectedTab} />}
+      {selectedTab === "Query" && <QueryPanel />}
       {selectedTab === "Import" && <ImportPanel selectedTab={selectedTab} />}
     </>
   );
