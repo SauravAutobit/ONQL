@@ -8,6 +8,9 @@ interface ExportPanelProps {
 const ExportPanel = ({ selectedTab }: ExportPanelProps) => {
   return (
     <>
+      <div className="exportPanel-heading">
+        Exporting databases from the current server
+      </div>
       <FormPanel panelName={"Export template"} selectedTab={selectedTab} />
     </>
   );

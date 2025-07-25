@@ -81,6 +81,7 @@ button:focus-visible {
   --sidebar-bg-secondary: #ecf7ff;
   --sidebar-bg-tertiary: #3e5a70;
   --table-bg-primary: #f3f3f3;
+  --input-bg-primary: #fafafa;
 
   /* text color */
   --text-color-primary: #3c3c3c;

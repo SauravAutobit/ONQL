@@ -7,6 +7,7 @@ import cross from "../../assets/icons/cross.svg";
 import chatgpt from "../../assets/icons/chatGpt.svg";
 import { useDispatch } from "react-redux";
 import { setOpenExtensionSidebar } from "../../store/slices/extensionSidebarSlice";
+import ExtensionSidebar from "../extensionSidebar/ExtensionSidebar";
 
 const Header = () => {
   const [servers, setServers] = useState(1);
@@ -64,6 +65,7 @@ const Header = () => {
           onClick={() => dispatch(setOpenExtensionSidebar())}
         />
       </Navbar>
+      <ExtensionSidebar />
     </>
   );
 };

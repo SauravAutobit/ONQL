@@ -1,7 +1,7 @@
 .form-panel {
   border: 1px solid var(--border-color-primary);
   border-radius: 10px;
-  padding: 16px;
+  padding: 33px 16px 16px 16px;
   position: relative;
   margin: 39px 0 17px 0;
   /* background-color: #fff; */
@@ -92,4 +92,25 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.formPanel-import-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-select.import {
+  width: 100%;
+}
+
+.formPanel-togglebtn-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-input.import {
+  width: 100%;
 }

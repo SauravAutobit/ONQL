@@ -4,6 +4,7 @@ import OnqlPanel from "../../components/onqlPanel/OnqlPanel";
 import SubHeader from "../../components/subHeader/SubHeader";
 import "./ServerView.css";
 import ExportPanel from "../../components/exportPanel/ExportPanel";
+import ImportPanel from "../../components/importPanel/ImportPanel";
 
 const ServerView = () => {
   const [selectedTab, setSelectedTab] = useState("Database");
@@ -20,6 +21,7 @@ const ServerView = () => {
       )}
       {selectedTab === "ONQL" && <OnqlPanel selectedTab={selectedTab} />}
       {selectedTab === "Export" && <ExportPanel selectedTab={selectedTab} />}
+      {selectedTab === "Import" && <ImportPanel selectedTab={selectedTab} />}
     </>
   );
 };
