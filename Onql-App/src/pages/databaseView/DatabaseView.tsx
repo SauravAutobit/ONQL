@@ -6,6 +6,7 @@ import SearchPanel from "../../components/searchPanel/SearchPanel";
 import ImportPanel from "../../components/importPanel/ImportPanel";
 import QueryPanel from "../../components/queryPanel/QueryPanel";
 import ExportPanel from "../../components/exportPanel/ExportPanel";
+import OperationPanel from "../../components/operationPanel/OperationPanel";
 
 const DatabaseView = () => {
   const [selectedTab, setSelectedTab] = useState("Structure");
@@ -39,6 +40,7 @@ const DatabaseView = () => {
         />
       )}
       {selectedTab === "Import" && <ImportPanel selectedTab={selectedTab} />}
+      {selectedTab === "Operation" && <OperationPanel />}
     </>
   );
 };
