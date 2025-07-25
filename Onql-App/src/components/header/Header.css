@@ -12,6 +12,9 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header-add-container {
@@ -47,4 +50,15 @@
 
 .header-server-port {
   color: var(--text-color-secondary);
+}
+
+.header-addServer-container {
+  display: flex;
+  align-items: center;
+}
+
+.header-extension-img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }

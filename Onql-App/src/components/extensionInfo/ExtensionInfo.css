@@ -23,5 +23,48 @@
 
 .extensionInfo-btns {
   display: flex;
+  align-items: center;
   gap: 16px;
+}
+
+.extensionInfo-name {
+  font-size: var(--font-size-secondary);
+  font-weight: var(--font-weight-secondary);
+  color: var(--sidebar-bg-primary);
+}
+
+.extensionInfo-userInfo {
+  color: var(--sidebar-bg-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.extensionInfo-userIcon-count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.extensionInfo-description {
+  color: var(--sidebar-bg-primary);
+}
+
+.extensionInfo-description.update {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.extensionInfo-details {
+  margin: 50px;
+}
+
+.extensionInfo-details-name {
+  font-size: 32px;
+  font-weight: var(--font-weight-tertiary);
+}
+
+.extensionInfo-detailsInfo {
+  font-size: var(--font-size-tertiary);
 }

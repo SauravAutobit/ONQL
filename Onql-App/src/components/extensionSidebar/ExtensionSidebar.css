@@ -1,0 +1,75 @@
+/* .css-kul2fg-MuiPaper-root-MuiDrawer-paper {
+  top: 42px !important;
+}
+
+.css-1p0p311-MuiPaper-root-MuiDrawer-paper {
+  top: 42px !important;
+} */
+
+.extensionSidebar-contianer {
+  top: 42px !important;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 77px 42px;
+  /* min-height: 100vh; */
+  /* background-color: #f8f9fa; */
+}
+
+/* Card */
+.card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  border: none;
+}
+
+.login-btn {
+  background-color: #333;
+  color: white;
+}
+
+.signup-btn {
+  background-color: transparent;
+  color: #333;
+  border: 2px solid #333;
+}
+
+.stay-logged-out {
+  color: #666;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}

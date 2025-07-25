@@ -4,6 +4,9 @@ import "../header/Header.css";
 import Navbar from "react-bootstrap/Navbar";
 import plus from "../../assets/icons/plus.svg";
 import cross from "../../assets/icons/cross.svg";
+import chatgpt from "../../assets/icons/chatGpt.svg";
+import { useDispatch } from "react-redux";
+import { setOpenExtensionSidebar } from "../../store/slices/extensionSidebarSlice";
 
 const Header = () => {
   const [servers, setServers] = useState(1);
@@ -28,28 +31,38 @@ const Header = () => {
       console.log("Remove Server clicked");
     }
   };
+
+  const dispatch = useDispatch();
   return (
     <>
       <Navbar expand="lg" className="header-bg">
-        <div className="header-add-container" onClick={addServer}>
-          <img src={plus} alt="addIcon" />
-        </div>
-        {Array.from({ length: servers }).map((_, index) => (
-          <div className="header-server-container" key={index}>
-            <img src={server} alt="serverIcon" />
-            <p className="header-server-text">
-              Server:{" "}
-              <span className="header-server-port">
-                127.0.0.1 <b>{index}</b>
-              </span>
-            </p>
-            <img
-              src={cross}
-              alt="crossIcon"
-              onClick={() => removeServer(index)}
-            />
+        <div className="header-addServer-container">
+          <div className="header-add-container" onClick={addServer}>
+            <img src={plus} alt="addIcon" />
           </div>
-        ))}
+          {Array.from({ length: servers }).map((_, index) => (
+            <div className="header-server-container" key={index}>
+              <img src={server} alt="serverIcon" />
+              <p className="header-server-text">
+                Server:{" "}
+                <span className="header-server-port">
+                  127.0.0.1 <b>{index}</b>
+                </span>
+              </p>
+              <img
+                src={cross}
+                alt="crossIcon"
+                onClick={() => removeServer(index)}
+              />
+            </div>
+          ))}
+        </div>
+        <img
+          src={chatgpt}
+          alt="chatgpt"
+          className="header-extension-img"
+          onClick={() => dispatch(setOpenExtensionSidebar())}
+        />
       </Navbar>
     </>
   );

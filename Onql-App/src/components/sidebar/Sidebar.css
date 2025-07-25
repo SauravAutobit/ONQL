@@ -221,3 +221,8 @@
   font-weight: var(--font-weight-secondary);
   margin-top: 10px;
 }
+
+.css-1lwhjos-MuiPaper-root-MuiDrawer-paper {
+  border: none !important;
+  box-shadow: 2px 0px 10px 0px #00000033 !important;
+}
