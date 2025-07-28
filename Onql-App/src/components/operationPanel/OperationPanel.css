@@ -1,0 +1,17 @@
+.operationPanel-radio-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.operationPanel-check-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.operationPanel-copyDb-btn {
+  display: flex;
+  justify-content: flex-end;
+}
