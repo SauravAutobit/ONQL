@@ -5,6 +5,7 @@ import Button from "../button/Button";
 import { Link } from "react-router-dom";
 
 const StructurePanel = () => {
+  // const column = [{}];
   return (
     <>
       <FormPanel panelName={"Create Table"}>
@@ -40,7 +41,7 @@ const StructurePanel = () => {
           </div>
         </>
       </FormPanel>
-      <Table7Columns headingCol1={"Table"} />
+      <Table7Columns headingCol1={"table"} />
       <div className="structurePanel-text">
         <p>Print</p>
         <p>Data Dictinory</p>
