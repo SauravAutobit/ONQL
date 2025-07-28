@@ -1,0 +1,23 @@
+.settingsTabs-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* justify-content: space-between; */
+  margin-top: 20px;
+}
+
+.settingsTabs-tab {
+  height: 30px;
+  border: 1px solid var(--border-color-primary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 20px;
+  cursor: pointer;
+}
+
+.settingsTabs-tab.selected {
+  background-color: var(--sidebar-bg-primary);
+  color: var(--text-color-tertiary);
+}

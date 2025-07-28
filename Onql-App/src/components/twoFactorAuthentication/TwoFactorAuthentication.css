@@ -1,0 +1,25 @@
+.twoFactorAuthentication-radio-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.twoFactorAuthentication-radio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.twoFactorAuthentication-radio-FirstText {
+  font-weight: var(--font-weight-tertiary);
+}
+
+.twoFactorAuthentication-all-radiobtns {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.twoFactorAuthentication-radio-btn-container {
+  padding-left: 36px;
+  padding-top: 20px;
+}

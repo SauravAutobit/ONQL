@@ -1,7 +1,7 @@
 import "./RadioButton.css";
 
 interface RadioButtonProps {
-  text: string;
+  text?: string;
   name: string;
 }
 const RadioButton = ({ text, name }: RadioButtonProps) => {

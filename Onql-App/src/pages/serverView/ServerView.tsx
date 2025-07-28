@@ -5,6 +5,7 @@ import SubHeader from "../../components/subHeader/SubHeader";
 import "./ServerView.css";
 import ExportPanel from "../../components/exportPanel/ExportPanel";
 import ImportPanel from "../../components/importPanel/ImportPanel";
+import SettingsPanel from "../../components/settingsPanel/SettingsPanel";
 
 const ServerView = () => {
   const [selectedTab, setSelectedTab] = useState("Database");
@@ -22,6 +23,7 @@ const ServerView = () => {
         <ExportPanel heading={"Exporting databases from the current server"} />
       )}
       {selectedTab === "Import" && <ImportPanel />}
+      {selectedTab === "Settings" && <SettingsPanel />}
     </>
   );
 };
