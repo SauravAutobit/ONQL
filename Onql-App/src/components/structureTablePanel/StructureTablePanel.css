@@ -1,0 +1,37 @@
+.space-usage-container {
+  width: 175px;
+  /* height: 186px; */
+  border-radius: 10px;
+  border: 1px solid var(--border-color-primary);
+}
+
+.space-usage-heading {
+  text-align: center;
+  font-weight: var(--font-weight-tertiary);
+  background-color: #f2faff;
+  padding: 4px;
+}
+
+.space-usage-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px;
+}
+
+.space-usage-details.bg-grey {
+  background-color: #47647a1a;
+}
+
+.structureTablePanel-stats-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.row-statistics-container {
+  width: 284px;
+  /* height: 186px; */
+  border-radius: 10px;
+  border: 1px solid var(--border-color-primary);
+}
