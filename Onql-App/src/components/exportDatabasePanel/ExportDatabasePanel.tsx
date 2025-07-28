@@ -3,12 +3,14 @@ import CheckBox from "../checkBox/CheckBox";
 import tableDownArrow from "../../assets/icons/tableDownArrow.svg";
 import FormPanel from "../formPanel/FormPanel";
 
-const ExportDatabasePanel = () => {
+interface ExportDatabasePanelProps {
+  heading: string;
+}
+
+const ExportDatabasePanel = ({ heading }: ExportDatabasePanelProps) => {
   return (
     <>
-      <div className="exportPanel-heading">
-        Exporting tables from the “database_name” Database
-      </div>
+      <div className="exportPanel-heading">{heading}</div>
       <FormPanel panelName={"Export template"}>
         <div className="formPanel-import-container format">
           <p>Select Table</p>

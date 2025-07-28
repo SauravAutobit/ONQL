@@ -1,0 +1,12 @@
+.tablePartition-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.tablePartition-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

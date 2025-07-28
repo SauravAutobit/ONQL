@@ -7,6 +7,8 @@ import ProtocolTable from "./pages/protocolTable/ProtocolTable";
 import ProtocolColumn from "./pages/protocolColumn/ProtocolColumn";
 import ExtensionDetails from "./pages/extensionDetails/ExtensionDetails";
 import DatabaseView from "./pages/databaseView/DatabaseView";
+import CreateTable from "./pages/createTable/CreateTable";
+import TableView from "./pages/tableView/TableView";
 
 export const appRouter = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ export const appRouter = createBrowserRouter([
       {
         path: "/database-view",
         element: <DatabaseView />,
+      },
+      {
+        path: "/create-table",
+        element: <CreateTable />,
+      },
+      {
+        path: "/table-view",
+        element: <TableView />,
       },
     ],
   },

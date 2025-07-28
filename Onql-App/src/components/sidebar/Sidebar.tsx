@@ -717,7 +717,12 @@ const Sidebar = () => {
       <Main
         open={open}
         extensionSidebarOpen={extensionSidebarOpen} // pass the state here
-        sx={{ padding: pathname === "/extension-details" ? "0" : "10px" }}
+        sx={{
+          padding:
+            pathname === "/extension-details" || pathname === "/create-table"
+              ? "0"
+              : "10px",
+        }}
       >
         <Outlet />
       </Main>

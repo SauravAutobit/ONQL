@@ -1,0 +1,27 @@
+.queryActions-container {
+  margin-top: 20px;
+  border: 1px solid var(--border-color-primary);
+  padding: 24px 16px;
+  border-radius: 10px;
+  height: 114px;
+}
+
+.queryActions-options-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.queryActions-options {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.queryActions-option {
+  color: #518bff;
+}
+
+.queryActions-heading {
+  color: #000000;
+  margin-bottom: 20px;
+}

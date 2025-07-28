@@ -29,7 +29,11 @@ const DatabaseView = () => {
       {selectedTab === "ONQL" && <OnqlPanel />}
       {selectedTab === "Search" && <SearchPanel />}
       {selectedTab === "Query" && <QueryPanel />}
-      {selectedTab === "Export" && <ExportDatabasePanel />}
+      {selectedTab === "Export" && (
+        <ExportDatabasePanel
+          heading={"Exporting tables from the “database_name” Database"}
+        />
+      )}
       {selectedTab === "Import" && <ImportPanel />}
       {selectedTab === "Operation" && <OperationPanel />}
     </>

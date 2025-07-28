@@ -2,6 +2,7 @@ import "./StructurePanel.css";
 import FormPanel from "../formPanel/FormPanel";
 import Table7Columns from "../table7Columns/Table7Columns";
 import Button from "../button/Button";
+import { Link } from "react-router-dom";
 
 const StructurePanel = () => {
   return (
@@ -22,7 +23,9 @@ const StructurePanel = () => {
             />
           </div>
 
-          <Button btnText="Create new table" />
+          <Link to={"/create-table"}>
+            <Button btnText="Create new table" width={124} height={38} />
+          </Link>
         </div>
       </FormPanel>
       <FormPanel panelName={"Filters"}>

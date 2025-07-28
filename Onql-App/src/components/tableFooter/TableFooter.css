@@ -1,0 +1,13 @@
+.tableFooter-container {
+  height: 82px;
+  margin-top: 24px;
+  box-shadow: 0px 0px 4px 0px #00000026;
+  padding: 22px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+}
