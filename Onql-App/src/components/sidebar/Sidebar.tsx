@@ -34,6 +34,8 @@ import chrome from "../../assets/icons/chrome.svg";
 import insta from "../../assets/icons/insta.svg";
 import fb from "../../assets/icons/fb.svg";
 import upArrow from "../../assets/icons/upArrow.svg";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../store/store";
 
 // --- Control the widths here ---
 const iconAreaWidth = 71;
@@ -73,26 +75,55 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 // CORRECTED: Main content component with proper margin transitions
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
+
+const ExtensionSidebarWidth = 413; // Same as your Drawer width
+
+const Main = styled("main", {
+  shouldForwardProp: (prop) =>
+    prop !== "open" && prop !== "extensionSidebarOpen",
+})<{
   open?: boolean;
-}>(({ theme, open }) => ({
+  extensionSidebarOpen?: boolean;
+}>(({ theme, open, extensionSidebarOpen }) => ({
   flexGrow: 1,
   padding: theme.spacing(3),
-  transition: theme.transitions.create("margin", {
+  transition: theme.transitions.create(["margin-left", "margin-right"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  // Default margin for closed state
   marginLeft: `${iconAreaWidth}px`,
   ...(open && {
-    transition: theme.transitions.create("margin", {
+    transition: theme.transitions.create(["margin-left", "margin-right"], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    // Margin when drawer is open
     marginLeft: `${drawerWidth}px`,
   }),
+  ...(extensionSidebarOpen && {
+    marginRight: `${ExtensionSidebarWidth}px`, // Add this
+  }),
 }));
+
+// const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
+//   open?: boolean;
+// }>(({ theme, open }) => ({
+//   flexGrow: 1,
+//   padding: theme.spacing(3),
+//   transition: theme.transitions.create("margin", {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   // Default margin for closed state
+//   marginLeft: `${iconAreaWidth}px`,
+//   ...(open && {
+//     transition: theme.transitions.create("margin", {
+//       easing: theme.transitions.easing.easeOut,
+//       duration: theme.transitions.duration.enteringScreen,
+//     }),
+//     // Margin when drawer is open
+//     marginLeft: `${drawerWidth}px`,
+//   }),
+// }));
 
 const Sidebar = () => {
   const [selectedIcon, setSelectedIcon] = React.useState(0);
@@ -113,6 +144,11 @@ const Sidebar = () => {
   };
 
   const { pathname } = useLocation();
+
+  const extensionSidebarOpen = useSelector(
+    (store: RootState) => store.extensionSidebar.value
+  );
+
   return (
     // REMOVED: display: "flex" is no longer needed here
     <Box>
@@ -680,6 +716,7 @@ const Sidebar = () => {
       {/* Main content now correctly moves with the sidebar */}
       <Main
         open={open}
+        extensionSidebarOpen={extensionSidebarOpen} // pass the state here
         sx={{ padding: pathname === "/extension-details" ? "0" : "10px" }}
       >
         <Outlet />

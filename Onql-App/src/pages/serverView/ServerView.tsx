@@ -16,17 +16,12 @@ const ServerView = () => {
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
       />
-      {selectedTab === "Database" && (
-        <DatatbaseListPanel selectedTab={selectedTab} />
-      )}
-      {selectedTab === "ONQL" && <OnqlPanel selectedTab={selectedTab} />}
+      {selectedTab === "Database" && <DatatbaseListPanel />}
+      {selectedTab === "ONQL" && <OnqlPanel />}
       {selectedTab === "Export" && (
-        <ExportPanel
-          selectedTab={selectedTab}
-          heading={"Exporting databases from the current server"}
-        />
+        <ExportPanel heading={"Exporting databases from the current server"} />
       )}
-      {selectedTab === "Import" && <ImportPanel selectedTab={selectedTab} />}
+      {selectedTab === "Import" && <ImportPanel />}
     </>
   );
 };

@@ -9,6 +9,8 @@ const FileUploadInput = () => {
     const file = e.target.files?.[0];
     setFileName(file ? file.name : "No File Chosen");
   };
+
+  // Core file handler
   //   const handleFile = (file?: File) => {
   //     if (!file) return;
 
@@ -21,6 +23,7 @@ const FileUploadInput = () => {
   //     // Upload or process the file here
   //     console.log("Selected file:", file);
   //   };
+
   // useEffect(() => {
   //   const handleDrop = (e: DragEvent) => {
   //     e.preventDefault();

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FormPanel from "../../components/formPanel/FormPanel";
 import FormSection from "../../components/formSection/FormSection";
+import Button from "../../components/button/Button";
 
 interface AddColumn {
   alias: string;
@@ -14,6 +15,8 @@ const ProtocolColumn = () => {
     show: false,
   });
 
+  const [selectedDatabase, setSelectedDatabase] = useState("");
+
   const handleAddColumn = () => {
     if (addColumn.alias !== "" && addColumn.column !== "") {
       setAddColumn((prev) => {
@@ -26,13 +29,49 @@ const ProtocolColumn = () => {
   };
   return (
     <>
-      <FormPanel
-        panelName="Add Column"
-        selectedTab="Add Column"
-        addColumn={addColumn}
-        setAddColumn={setAddColumn}
-        handleAddColumn={handleAddColumn}
-      />
+      <FormPanel panelName="Add Column">
+        <div className="form-panel-fields">
+          <div className="form-panel-options">
+            <input
+              type="text"
+              placeholder="Column alias"
+              className="form-input"
+              value={addColumn.alias}
+              onChange={(e) =>
+                setAddColumn((prev) => {
+                  return {
+                    ...prev,
+                    alias: e.target.value,
+                  };
+                })
+              }
+            />
+
+            <select
+              className="form-select"
+              value={selectedDatabase}
+              onChange={(e) => {
+                setSelectedDatabase(e.target.value);
+                setAddColumn((prev) => {
+                  return {
+                    ...prev,
+                    column: e.target.value,
+                  };
+                });
+              }}
+            >
+              <option value="" disabled>
+                Select Column
+              </option>
+              <option value="Database 1">Database 1</option>
+              <option value="Database 2">Database 2</option>
+              <option value="Database 3">Database 3</option>
+            </select>
+          </div>
+
+          <Button btnText="Add Column" width={109} onClick={handleAddColumn} />
+        </div>
+      </FormPanel>
       {addColumn.show && <FormSection sectionName="Column" />}
       <FormSection sectionName="Relation" />
       <FormSection sectionName="Context" />

@@ -5,8 +5,8 @@ import OnqlPanel from "../../components/onqlPanel/OnqlPanel";
 import SearchPanel from "../../components/searchPanel/SearchPanel";
 import ImportPanel from "../../components/importPanel/ImportPanel";
 import QueryPanel from "../../components/queryPanel/QueryPanel";
-import ExportPanel from "../../components/exportPanel/ExportPanel";
 import OperationPanel from "../../components/operationPanel/OperationPanel";
+import ExportDatabasePanel from "../../components/exportDatabasePanel/ExportDatabasePanel";
 
 const DatabaseView = () => {
   const [selectedTab, setSelectedTab] = useState("Structure");
@@ -25,21 +25,12 @@ const DatabaseView = () => {
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
       />
-
-      {selectedTab === "Structure" && (
-        <StructurePanel selectedTab={selectedTab} />
-      )}
-
-      {selectedTab === "ONQL" && <OnqlPanel selectedTab={selectedTab} />}
-      {selectedTab === "Search" && <SearchPanel selectedTab={selectedTab} />}
+      {selectedTab === "Structure" && <StructurePanel />}
+      {selectedTab === "ONQL" && <OnqlPanel />}
+      {selectedTab === "Search" && <SearchPanel />}
       {selectedTab === "Query" && <QueryPanel />}
-      {selectedTab === "Export" && (
-        <ExportPanel
-          selectedTab={selectedTab}
-          heading={"Exporting tables from the “database_name” Database"}
-        />
-      )}
-      {selectedTab === "Import" && <ImportPanel selectedTab={selectedTab} />}
+      {selectedTab === "Export" && <ExportDatabasePanel />}
+      {selectedTab === "Import" && <ImportPanel />}
       {selectedTab === "Operation" && <OperationPanel />}
     </>
   );
