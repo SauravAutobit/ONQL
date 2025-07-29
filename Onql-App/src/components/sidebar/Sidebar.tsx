@@ -68,9 +68,9 @@ const Drawer = styled(MuiDrawer, {
   boxSizing: "border-box",
   "& .MuiDrawer-paper": {
     ...(open ? openedMixin(theme) : closedMixin(theme)),
-    background: open
-      ? `linear-gradient(to right, var(--sidebar-bg-primary) ${iconAreaWidth}px, var(--sidebar-bg-secondary) ${iconAreaWidth}px)`
-      : `var(--sidebar-bg-primary)`,
+    background: `linear-gradient(to right, var(--sidebar-bg-primary) ${iconAreaWidth}px, var(--sidebar-bg-secondary) ${iconAreaWidth}px)`,
+    // ? `linear-gradient(to right, var(--sidebar-bg-primary) ${iconAreaWidth}px, var(--sidebar-bg-secondary) ${iconAreaWidth}px)`
+    // : `var(--sidebar-bg-primary)`,
   },
 }));
 

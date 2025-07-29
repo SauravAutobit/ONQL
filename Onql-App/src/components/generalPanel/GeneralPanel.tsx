@@ -1,4 +1,3 @@
-import Button from "../button/Button";
 import FeaturesOptions from "../featuresOptions/FeaturesOptions";
 import "./GeneralPanel.css";
 
@@ -75,28 +74,6 @@ const GeneralPanel = () => {
           "Sunday",
         ]}
       />
-      <FeaturesOptions
-        text={"First day of calendar"}
-        renderType="numberInput"
-      />
-
-      <div className="generalPanel-btn-container">
-        <Button
-          btnText={"Apply"}
-          width={100}
-          height={30}
-          padding={"6px 20px"}
-        />
-        <Button
-          btnText={"Reset"}
-          width={100}
-          height={30}
-          padding={"6px 20px"}
-          color="var(--text-color-primary)"
-          background="white"
-          border="1px solid var(--border-color-primary)"
-        />
-      </div>
     </div>
   );
 };

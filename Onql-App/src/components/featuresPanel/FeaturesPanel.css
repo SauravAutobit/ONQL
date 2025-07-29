@@ -5,3 +5,9 @@
   background-color: #f2faff;
   margin-top: 10px;
 }
+
+.featuresPanel-btn-container {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
