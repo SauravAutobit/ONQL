@@ -1,26 +1,26 @@
-import "./SettingsTabs.css";
+import "./FeaturesTabs.css";
 
-interface SettingsTabsProps {
+interface FeaturesTabsProps {
+  options: string[];
   selectedTab: string;
   setSelectedTab: (tab: string) => void;
-  options: string[];
 }
 
-const SettingsTabs = ({
+const FeaturesTabs = ({
   options,
   selectedTab,
   setSelectedTab,
-}: SettingsTabsProps) => {
+}: FeaturesTabsProps) => {
   return (
-    <div className="settingsTabs-container">
+    <div className="featuresTabs-container">
       {options.map((option) => {
         return (
           <div
             key={option}
             className={
               selectedTab === option
-                ? "settingsTabs-tab selected"
-                : "settingsTabs-tab"
+                ? "featuresTabs-tab selected"
+                : "featuresTabs-tab"
             }
             onClick={() => setSelectedTab(option)}
           >
@@ -32,4 +32,4 @@ const SettingsTabs = ({
   );
 };
 
-export default SettingsTabs;
+export default FeaturesTabs;

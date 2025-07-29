@@ -1,0 +1,7 @@
+.featuresPanel-container {
+  border: 1px solid var(--border-color-primary);
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f2faff;
+  margin-top: 10px;
+}

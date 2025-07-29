@@ -3,6 +3,7 @@ import SettingsTabs from "../settingsTabs/SettingsTabs";
 import "./Settings.css";
 import TwoFactorAuthenticationPanel from "../twoFactorAuthenticationPanel/TwoFactorAuthenticationPanel";
 import ManageYourSettingPanel from "../manageYourSettingPanel/ManageYourSettingPanel";
+import FeaturesPanel from "../featuresPanel/FeaturesPanel";
 
 const SettingsPanel = () => {
   const [selectedTab, setSelectedTab] = useState("Manage your setting");
@@ -26,6 +27,7 @@ const SettingsPanel = () => {
       {selectedTab === "Two factor authentication" && (
         <TwoFactorAuthenticationPanel />
       )}
+      {selectedTab === "Features" && <FeaturesPanel />}
     </>
   );
 };
