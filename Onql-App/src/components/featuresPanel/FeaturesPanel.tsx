@@ -4,6 +4,7 @@ import "./FeaturesPanel.css";
 import GeneralPanel from "../generalPanel/GeneralPanel";
 import Button from "../button/Button";
 import FeatureDatabasePanel from "../featureDatabasePanel/FeatureDatabasePanel";
+import TextFields from "../textFields/TextFields";
 
 const FeaturesPanel = () => {
   const [selectedTab, setSelectedTab] = useState("General");
@@ -24,6 +25,7 @@ const FeaturesPanel = () => {
 
       {selectedTab === "General" && <GeneralPanel />}
       {selectedTab === "Databases" && <FeatureDatabasePanel />}
+      {selectedTab === "Text fields" && <TextFields />}
       <div className="featuresPanel-btn-container">
         <Button
           btnText={"Apply"}
