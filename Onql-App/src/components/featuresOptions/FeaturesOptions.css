@@ -1,0 +1,16 @@
+.featuresOptions-checkbox-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.featuresOptions-checkbox {
+  width: 33%;
+}
+
+.featuresOptions-text {
+  font-weight: var(--font-weight-tertiary);
+}
+
+.featuresOptions-subText {
+  color: var(--text-color-secondary);
+}
