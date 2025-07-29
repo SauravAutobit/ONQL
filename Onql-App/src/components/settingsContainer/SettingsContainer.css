@@ -1,0 +1,15 @@
+.settingsContainer {
+  border: 1px solid #47647a33;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.settingsContainer-heading {
+  height: 44px;
+  padding: 10px;
+  background: #f2faff;
+  border-bottom: 1px solid #47657a33;
+  font-weight: var(--font-weight-secondary);
+  font-size: var(--font-size-secondary);
+  color: var(--sidebar-bg-primary);
+}

@@ -4,14 +4,6 @@
   gap: 10px;
 }
 
-.twoFactorAuthentication-radio-text {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.twoFactorAuthentication-radio-FirstText {
-  font-weight: var(--font-weight-tertiary);
-}
 
 .twoFactorAuthentication-all-radiobtns {
   display: flex;

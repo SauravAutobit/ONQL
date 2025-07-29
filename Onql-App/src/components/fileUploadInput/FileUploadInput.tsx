@@ -1,7 +1,31 @@
 import React, { useRef, useState } from "react";
 import "./FileUploadInput.css";
 
-const FileUploadInput = () => {
+interface FileUploadInputProps {
+  height?: number;
+  padding?: string;
+  flex?: boolean;
+  marginTop?: boolean;
+  marginBottom?: boolean;
+}
+const FileUploadInput = ({
+  height = 38,
+  padding = "10px 33px",
+  flex = false,
+  marginTop = true,
+  marginBottom = true,
+}: FileUploadInputProps) => {
+  const style = {
+    height,
+    padding,
+    flex: flex ? "flex" : "initial",
+    alignItems: flex ? "center" : "initial",
+    marginTop: marginTop ? 20 : 0,
+    marginBottom: marginBottom ? 10 : 0,
+    width: flex ? "44%" : "100%",
+    gap: flex ? 20 : 0,
+  };
+
   const inputRef = useRef<HTMLInputElement>(null);
   const [fileName, setFileName] = useState("No File Chosen");
 
@@ -46,16 +70,29 @@ const FileUploadInput = () => {
   // }, []);
 
   return (
-    <div>
-      <p className="fileUploadInput-heading">
+    <div
+      style={{
+        width: style.width,
+        display: style.flex,
+        alignItems: style.alignItems,
+        gap: style.gap,
+      }}
+    >
+      <p
+        className="fileUploadInput-heading"
+        style={{ marginTop: style.marginTop, marginBottom: style.marginBottom }}
+      >
         Browse your computer: (Max: 40MiB)
       </p>
 
       <div
         className="custom-file-upload"
+        style={{ height: style.height }}
         onClick={() => inputRef.current?.click()}
       >
-        <span className="choose-file">Choose file</span>
+        <span className="choose-file" style={{ padding: style.padding }}>
+          Choose file
+        </span>
         <span className="file-name">{fileName}</span>
       </div>
 

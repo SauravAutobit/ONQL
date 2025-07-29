@@ -1,7 +1,8 @@
 import { useState } from "react";
 import SettingsTabs from "../settingsTabs/SettingsTabs";
 import "./Settings.css";
-import TwoFactorAuthentication from "../twoFactorAuthentication/TwoFactorAuthentication";
+import TwoFactorAuthenticationPanel from "../twoFactorAuthenticationPanel/TwoFactorAuthenticationPanel";
+import ManageYourSettingPanel from "../manageYourSettingPanel/ManageYourSettingPanel";
 
 const SettingsPanel = () => {
   const [selectedTab, setSelectedTab] = useState("Manage your setting");
@@ -21,8 +22,9 @@ const SettingsPanel = () => {
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
       />
+      {selectedTab === "Manage your setting" && <ManageYourSettingPanel />}
       {selectedTab === "Two factor authentication" && (
-        <TwoFactorAuthentication />
+        <TwoFactorAuthenticationPanel />
       )}
     </>
   );

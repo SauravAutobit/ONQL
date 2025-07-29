@@ -1,0 +1,22 @@
+.manageYourSettingPanel-container {
+  padding: 22px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.manageYourSettingPanel-fileUpload-container {
+  margin-left: 28px;
+  margin-top: 18px;
+}
+
+.manageYourSettingPanel-option-text {
+  font-size: var(--font-size-tertiary);
+}
+
+.manageYourSettingPanel-exportBtn-container {
+  margin-left: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
