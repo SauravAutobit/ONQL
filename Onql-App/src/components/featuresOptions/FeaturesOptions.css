@@ -14,3 +14,7 @@
 .featuresOptions-subText {
   color: var(--text-color-secondary);
 }
+
+.featuresOptions-text-container {
+  width: 60%;
+}

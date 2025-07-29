@@ -158,3 +158,11 @@
   color: #0068c2;
   text-decoration: underline;
 }
+
+.form-input.import {
+  /* width: 100%;
+  overflow-wrap: break-word;
+  white-space: pre-wrap; */
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}

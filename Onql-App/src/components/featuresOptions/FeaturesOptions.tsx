@@ -2,7 +2,7 @@ import CheckBox from "../checkBox/CheckBox";
 import CustomNumberInput from "../numberInput/NumberInput";
 import "./FeaturesOptions.css";
 
-type RenderType = "checkbox" | "select" | "input" | "numberInput";
+type RenderType = "checkbox" | "select" | "input" | "numberInput" | "textarea";
 
 interface FeaturesOptionsProps {
   heading?: string;
@@ -11,6 +11,7 @@ interface FeaturesOptionsProps {
   renderType?: RenderType;
   inputPlaceholder?: string;
   selectOptions?: string[];
+  height?: number;
 }
 
 const FeaturesOptions = ({
@@ -20,6 +21,7 @@ const FeaturesOptions = ({
   renderType = "checkbox",
   inputPlaceholder,
   selectOptions,
+  height,
 }: FeaturesOptionsProps) => {
   const renderField = () => {
     switch (renderType) {
@@ -45,6 +47,14 @@ const FeaturesOptions = ({
             className="form-input import"
           />
         );
+      case "textarea":
+        return (
+          <textarea
+            placeholder={inputPlaceholder || ""}
+            className="form-input import"
+            style={{ height, resize: "none" }}
+          />
+        );
       case "numberInput":
         return <CustomNumberInput />;
       default:
@@ -60,7 +70,7 @@ const FeaturesOptions = ({
           alignItems: renderType === "checkbox" ? "center" : "flex-start",
         }}
       >
-        <div>
+        <div className="featuresOptions-text-container">
           <div className="featuresOptions-text">{text}</div>
           {subText && <p className="featuresOptions-subText">{subText}</p>}
         </div>
