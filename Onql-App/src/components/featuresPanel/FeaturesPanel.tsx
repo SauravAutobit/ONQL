@@ -4,7 +4,10 @@ import "./FeaturesPanel.css";
 import GeneralPanel from "../generalPanel/GeneralPanel";
 import Button from "../button/Button";
 import FeatureDatabasePanel from "../featureDatabasePanel/FeatureDatabasePanel";
-import TextFields from "../textFields/TextFields";
+import WarningsPanel from "../warningsPanel/WarningsPanel";
+import ConsolePanel from "../consolePanel/ConsolePanel";
+import PageTitlesPanel from "../pageTitlesPanel/PageTitlesPanel";
+import TextFieldsPanel from "../textFieldsPanel/TextFieldsPanel";
 
 const FeaturesPanel = () => {
   const [selectedTab, setSelectedTab] = useState("General");
@@ -25,7 +28,10 @@ const FeaturesPanel = () => {
 
       {selectedTab === "General" && <GeneralPanel />}
       {selectedTab === "Databases" && <FeatureDatabasePanel />}
-      {selectedTab === "Text fields" && <TextFields />}
+      {selectedTab === "Text fields" && <TextFieldsPanel />}
+      {selectedTab === "Page titles" && <PageTitlesPanel />}
+      {selectedTab === "Warnings" && <WarningsPanel />}
+      {selectedTab === "Console" && <ConsolePanel />}
       <div className="featuresPanel-btn-container">
         <Button
           btnText={"Apply"}

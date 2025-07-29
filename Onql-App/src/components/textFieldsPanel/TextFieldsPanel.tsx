@@ -1,7 +1,7 @@
 import FeaturesOptions from "../featuresOptions/FeaturesOptions";
-import "./TextFields.css";
+import "./TextFieldsPanel.css";
 
-const TextFields = () => {
+const TextFieldsPanel = () => {
   return (
     <div className="generalPanel-container">
       <FeaturesOptions
@@ -49,4 +49,4 @@ const TextFields = () => {
   );
 };
 
-export default TextFields;
+export default TextFieldsPanel;
