@@ -1,4 +1,3 @@
-import React from "react";
 import FeaturesOptions from "../featuresOptions/FeaturesOptions";
 
 const WarningsPanel = () => {
