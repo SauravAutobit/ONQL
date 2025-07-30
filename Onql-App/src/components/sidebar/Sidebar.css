@@ -28,7 +28,7 @@
   transition: opacity 0.3s ease-in-out;
   overflow: hidden; /* Hide content when collapsed */
   position: relative; /* For positioning the close button */
-  align-items: end;
+  /* align-items: end; */
 }
 
 .options-panel.sidebar-extensions {
@@ -107,6 +107,8 @@
   cursor: pointer;
   border-radius: 6px;
   background-color: var(--sidebar-bg-primary);
+  position: absolute;
+  right: 10px;
 }
 
 .css-1lwhjos-MuiPaper-root-MuiDrawer-paper {

@@ -220,7 +220,7 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
               <img
                 src={logo}
                 alt="logo"
-                style={{ alignSelf: "center", padding: "10px" }}
+                style={{ alignSelf: "center", padding: "34px 10px 10px 10px" }}
               />
 
               <div

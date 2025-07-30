@@ -12,13 +12,17 @@
   height: 30px;
   cursor: pointer;
   padding: 6px 20px;
-  --hover-bg: #47647a1a; /* default value */
   transition: "background 0.2s";
 }
 
 .featuresTabs-tab:hover {
-  background: var(--hover-bg);
+  background: #47647a1a;
 }
+
+/* if want hover conditonally not everywhere */
+/* .featuresTabs-tab.hover-enabled:hover {
+  background: var(--hover-bg, #47647a1a);
+} */
 
 .featuresTabs-tab.selected {
   background-color: var(--sidebar-bg-primary);

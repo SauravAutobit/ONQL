@@ -7,7 +7,6 @@ interface FeaturesTabsProps {
   padding?: string;
   border?: string;
   borderRight?: string;
-  hoverBg?: string;
 }
 
 const FeaturesTabs = ({
@@ -16,7 +15,6 @@ const FeaturesTabs = ({
   setSelectedTab,
   border = "1px solid var(--sidebar-bg-primary)",
   borderRight,
-  hoverBg,
 }: FeaturesTabsProps) => {
   return (
     <div className="featuresTabs-container" style={{ border }}>
@@ -29,12 +27,7 @@ const FeaturesTabs = ({
                 ? "featuresTabs-tab selected"
                 : "featuresTabs-tab"
             }
-            style={
-              {
-                borderRight,
-                "--hover-bg": hoverBg,
-              } as React.CSSProperties
-            }
+            style={{ borderRight }}
             onClick={() => setSelectedTab?.(option)}
           >
             {option}
@@ -46,3 +39,20 @@ const FeaturesTabs = ({
 };
 
 export default FeaturesTabs;
+
+// if want hover conditionallyu not everyewhere
+// <div
+//   key={option}
+//   className={`featuresTabs-tab ${selectedTab === option ? "selected" : ""} ${
+//     hoverEnabled || hoverBg ? "hover-enabled" : ""
+//   }`}
+//   style={
+//     {
+//       borderRight,
+//       "--hover-bg": hoverBg,
+//     } as React.CSSProperties
+//   }
+//   onClick={() => setSelectedTab?.(option)}
+// >
+//   {option}
+// </div>;
