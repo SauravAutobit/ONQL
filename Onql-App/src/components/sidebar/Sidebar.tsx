@@ -36,6 +36,7 @@ import fb from "../../assets/icons/fb.svg";
 import upArrow from "../../assets/icons/upArrow.svg";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
+import Terminal from "../terminal/Terminal";
 
 // --- Control the widths here ---
 const iconAreaWidth = 71;
@@ -721,10 +722,20 @@ const Sidebar = () => {
           padding:
             pathname === "/extension-details" || pathname === "/create-table"
               ? "0"
-              : "10px",
+              : "10px 10px 0 10px",
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh", // full screen height
         }}
       >
-        <Outlet />
+        <Box sx={{ flexGrow: 1 }}>
+          <Outlet />
+        </Box>
+
+        {/* Sticky terminal at bottom */}
+        <Box>
+          <Terminal />
+        </Box>
       </Main>
     </Box>
   );

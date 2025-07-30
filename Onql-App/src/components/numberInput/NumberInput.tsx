@@ -1,66 +1,35 @@
-import { NumberInput, Box } from "@chakra-ui/react";
-import { Provider } from "../ui/provider";
+import { useState } from "react";
+import "./NumberInput.css";
 
-const CustomNumberInput = () => (
-  <Provider>
-    <NumberInput.Root
-      min={0}
-      defaultValue={"0"}
-      max={9999}
-      width="100%"
-      height={"38px"}
-      border={"none"}
-    >
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-        bg="gray.50"
-        // px={4}
-        // py={2}
-        border="1px solid"
-        borderColor="gray.200"
-        borderRadius="md"
-        height={"38px"}
-      >
-        <NumberInput.Input
-          textAlign="left"
-          border="none"
-          fontWeight="semibold"
-          w="100%"
-          px={2}
-          bg="transparent"
-          outline="none"
-          _focusVisible={{ boxShadow: "none", borderColor: "transparent" }}
-          _focus={{ boxShadow: "none", borderColor: "transparent" }}
-          height={"38px"}
-          //   placeholder="Default Value"
-        />
+interface CustomNumberInputProps {
+  min?: number;
+  max?: number;
+  defaultValue?: number;
+}
 
-        <NumberInput.Control
-          direction="column"
-          height={"38px"}
-          ml={0}
-          border="none"
-          borderLeft="none"
-          _before={{ display: "none" }}
-        >
-          <NumberInput.IncrementTrigger
-            border="none"
-            fontSize="10px"
-            color="gray.600"
-            _hover={{ bg: "gray.100" }}
-          />
-          <NumberInput.DecrementTrigger
-            border="none"
-            fontSize="10px"
-            color="gray.600"
-            _hover={{ bg: "gray.100" }}
-          />
-        </NumberInput.Control>
-      </Box>
-    </NumberInput.Root>
-  </Provider>
-);
+const CustomNumberInput = ({
+  min = 0,
+  max = 9999,
+  defaultValue = 0,
+}: CustomNumberInputProps) => {
+  const [value, setValue] = useState<number>(defaultValue);
+
+  const handleChange = (delta: number) => {
+    const newValue = value + delta;
+    if (newValue >= min && newValue <= max) {
+      setValue(newValue);
+    }
+  };
+
+  return (
+    <div className="custom-number-input">
+      <input type="text" value={value} readOnly className="number-display" />
+      <div className="arrow-controls">
+        <div className="arrow up" onClick={() => handleChange(1)} />
+        <div className="arrow down" onClick={() => handleChange(-1)} />
+      </div>
+    </div>
+  );
+};
 
 export default CustomNumberInput;
