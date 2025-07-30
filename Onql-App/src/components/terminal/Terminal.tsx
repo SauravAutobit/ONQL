@@ -11,9 +11,10 @@ interface TerminalProps {
 
 const Terminal = ({ open }: TerminalProps) => {
   const [terminalOpen, setTerminalOpen] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState("Terminal");
+  const [activeTab, setActiveTab] = useState("Ext 1");
   const [terminalSidebar, setTerminalSidebar] = useState<boolean>(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const [terminalInputs, setTerminalInputs] = useState<{
     [key: string]: string;
@@ -32,10 +33,17 @@ const Terminal = ({ open }: TerminalProps) => {
   const terminalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (terminalOpen && terminalRef.current) {
-      terminalRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+    if (terminalOpen && !isClosing) {
+      const timeout = setTimeout(() => {
+        terminalRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+        });
+      }, 310); // match your open animation duration (~300ms)
+
+      return () => clearTimeout(timeout);
     }
-  }, [terminalOpen]);
+  }, [terminalOpen, isClosing]);
 
   const toggleSidebar = () => {
     if (terminalSidebar) {
@@ -49,18 +57,31 @@ const Terminal = ({ open }: TerminalProps) => {
       setTerminalSidebar(true); // ← remove the delay here
     }
   };
+
+  const toggleTerminal = () => {
+    if (terminalOpen) {
+      // Start closing animation
+      setIsClosing(true);
+      setTimeout(() => {
+        setTerminalOpen(false);
+        setIsClosing(false);
+      }, 300); // match animation duration
+    } else {
+      // Instantly open
+      setTerminalOpen(true);
+    }
+  };
+
   return (
     <>
       <div
         style={{ marginLeft: open ? "334px" : "71px", position: "relative" }}
       >
         <div
-          className="terminal-wrapper"
-          style={{
-            width: terminalOpen ? "" : "103px",
-            cursor: "pointer",
-          }}
-          onClick={() => setTerminalOpen(!terminalOpen)}
+          className={`terminal-wrapper ${
+            terminalOpen ? "expanded" : "collapsed"
+          }`}
+          onClick={toggleTerminal}
         >
           <div className="terminal-icon-heading">
             <img src={terminal} alt="terminal" />
@@ -78,14 +99,15 @@ const Terminal = ({ open }: TerminalProps) => {
             />
           )}
         </div>
-        {terminalOpen && (
+        {
           <div
             ref={terminalRef}
-            className={`terminal-area ${terminalOpen ? "open" : ""}`}
+            className={`terminal-area ${
+              terminalOpen ? (isClosing ? "closing" : "opening") : "closed"
+            }`}
             style={{
               display: "flex",
               position: "relative",
-              height: terminalOpen ? "auto" : "0px",
             }}
           >
             <textarea
@@ -131,7 +153,7 @@ const Terminal = ({ open }: TerminalProps) => {
               </div>
             )}
           </div>
-        )}
+        }
       </div>
     </>
   );

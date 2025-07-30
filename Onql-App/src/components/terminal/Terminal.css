@@ -1,10 +1,4 @@
 .terminal-wrapper {
-  /* background-color: #f4f4f4;
-  padding: 12px 16px;
-  border-top: 1px solid #ddd;
-  font-family: monospace;
-  height: 150px; 
-  overflow-y: auto; */
   background-color: var(--sidebar-bg-primary);
   display: flex;
   align-items: center;
@@ -12,7 +6,17 @@
   height: 30px;
   padding: 10px;
   color: #ffffff;
-  transition: "margin-left 225ms cubic-bezier(0.4, 0.0, 0.2, 1)";
+  transition: width 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.terminal-wrapper.collapsed {
+  width: 103px;
+}
+
+.terminal-wrapper.expanded {
+  width: 100%;
 }
 .terminal-icon-heading {
   display: flex;
@@ -22,14 +26,46 @@
 
 .terminal-area {
   overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
   max-height: 0;
   opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
-.terminal-area.open {
-  max-height: 200px; /* or something comfortably larger than textarea */
+.terminal-area.opening {
+  max-height: 300px;
   opacity: 1;
+}
+
+.terminal-area.closing {
+  max-height: 0;
+  opacity: 0;
+}
+
+.terminal-area.closed {
+  max-height: 0;
+  opacity: 0;
+}
+
+@keyframes terminalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes terminalSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 }
 
 .sidebar-slide {
