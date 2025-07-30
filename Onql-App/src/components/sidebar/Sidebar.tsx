@@ -261,6 +261,8 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
 
               <Collapse
                 in={dropDownOpen.open && dropDownOpen.option === "recent"}
+                timeout="auto"
+                unmountOnExit
               >
                 <div
                   // id="example-collapse-text"
@@ -289,6 +291,8 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
                     };
                   })
                 }
+                aria-controls="example-fade-text"
+                aria-expanded={dropDownOpen.open}
               >
                 <div className="sidebar-option-iconText">
                   <img src={star} alt="star" />
@@ -333,10 +337,6 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
                 open ? "is-open" : ""
               } sidebar-extensions`}
             >
-              {/* <IconButton
-              onClick={handleDrawerClose}
-              // sx={{ position: "absolute", top: 0, right: 0 }}
-            > */}
               <div className="sidebar-extensions-heading">
                 Extensions
                 <div
@@ -355,7 +355,6 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
                 />
                 <img src={extensionOption} alt="extensionOption" />
               </div>
-              {/* </IconButton> */}
               <div
                 className={
                   dropDownOpen.open && dropDownOpen.option === "installed"
@@ -730,17 +729,12 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
               : "10px 10px 0 10px",
           display: "flex",
           flexDirection: "column",
-          minHeight: "100vh", // full screen height
+          minHeight: "100vh",
         }}
       >
         <Box sx={{ flexGrow: 1 }}>
           <Outlet />
         </Box>
-
-        {/* Sticky terminal at bottom */}
-        {/* <Box>
-          <Terminal />
-        </Box> */}
       </Main>
     </Box>
   );
