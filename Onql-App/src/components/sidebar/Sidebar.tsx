@@ -36,7 +36,7 @@ import fb from "../../assets/icons/fb.svg";
 import upArrow from "../../assets/icons/upArrow.svg";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
-import Terminal from "../terminal/Terminal";
+// import Terminal from "../terminal/Terminal";
 
 // --- Control the widths here ---
 const iconAreaWidth = 71;
@@ -126,9 +126,14 @@ const Main = styled("main", {
 //   }),
 // }));
 
-const Sidebar = () => {
+interface SidebarProps {
+  open: boolean;
+  setOpen: (value: boolean) => void;
+}
+
+const Sidebar = ({ open, setOpen }: SidebarProps) => {
   const [selectedIcon, setSelectedIcon] = React.useState(0);
-  const [open, setOpen] = React.useState(true);
+  // const [open, setOpen] = React.useState(true);
 
   const [dropDownOpen, setDropDownOpen] = React.useState({
     open: false,
@@ -733,9 +738,9 @@ const Sidebar = () => {
         </Box>
 
         {/* Sticky terminal at bottom */}
-        <Box>
+        {/* <Box>
           <Terminal />
-        </Box>
+        </Box> */}
       </Main>
     </Box>
   );
