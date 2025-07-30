@@ -1,0 +1,6 @@
+.onql-tabs-btns-container {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}

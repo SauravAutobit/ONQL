@@ -3,30 +3,40 @@ import Button from "../button/Button";
 import FormPanel from "../formPanel/FormPanel";
 import QueryEditor from "../queryEditor/QueryEditor";
 import "./OnqlPanel.css";
+import FeaturesTabs from "../featuresTabs/FeaturesTabs";
+import { useLocation } from "react-router-dom";
 
 const OnqlPanel = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
+  const { pathname } = useLocation();
   return (
     <>
       <FormPanel panelName="Run ONQL query/queries on database testing_db: ">
         <>
           <QueryEditor />
-          <div className="form-onqlPanel-btns">
-            <Button
-              btnText={"Clear"}
-              width={100}
-              height={30}
-              padding={"6px 10px"}
-            />
-            <Button
-              btnText={"Format"}
-              width={100}
-              height={30}
-              padding={"6px 10px"}
-            />
+          <div className="onql-tabs-btns-container">
+            {pathname === "/table-view" && (
+              <FeaturesTabs
+                options={["SELECT*", "SELECT", "INSERT", "UPDATE", "DELETE"]}
+                border="1px solid var(--border-color-primary)"
+                borderRight="1px solid var(--border-color-primary)"
+              />
+            )}
+            <div className="form-onqlPanel-btns">
+              <Button
+                btnText={"Clear"}
+                width={100}
+                height={30}
+                padding={"6px 10px"}
+              />
+              <Button
+                btnText={"Format"}
+                width={100}
+                height={30}
+                padding={"6px 10px"}
+              />
+            </div>
           </div>
-
           <div className="form-onql-checkbox">
             <Checkbox {...label} />
             <p>Blind parameter</p>
