@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
 import "./Table3Columns.css";
-import Checkbox from "@mui/material/Checkbox";
+import CheckBox from "../checkBox/CheckBox";
 
 interface Table3ColumnsProps {
   headingCol1: string;
 }
 const Table3Columns = ({ headingCol1 }: Table3ColumnsProps) => {
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
   return (
     <>
       <table className="table3Columns-table">
@@ -20,9 +18,9 @@ const Table3Columns = ({ headingCol1 }: Table3ColumnsProps) => {
           </tr>
         </thead>
         <tbody>
-          <tr className="table3Columns-table-row">
-            <td>
-              <Checkbox {...label} disabled />
+          <tr className="table3Columns-table-row bg">
+            <td className="table3Columns-checkbox-container">
+              <CheckBox disabled />
             </td>
 
             <td>
@@ -33,9 +31,9 @@ const Table3Columns = ({ headingCol1 }: Table3ColumnsProps) => {
             </td>
             <td className="table3Columns-table-actions">Check privileges</td>
           </tr>
-          <tr>
-            <td>
-              <Checkbox {...label} disabled />
+          <tr className="table3Columns-table-row">
+            <td className="table3Columns-checkbox-container">
+              <CheckBox disabled />
             </td>
             <td>
               <Link to="/protocol-table">Database 2</Link>
@@ -45,19 +43,9 @@ const Table3Columns = ({ headingCol1 }: Table3ColumnsProps) => {
             </td>
             <td className="table3Columns-table-actions">Check privileges</td>
           </tr>
-          <tr className="table3Columns-table-row">
-            <td>
-              <Checkbox {...label} disabled />
-            </td>
-            <td>Database 1</td>
-            <td className="table3Columns-table-collations">
-              utf8mb4_general_ci
-            </td>
-            <td className="table3Columns-table-actions">Check privileges</td>
-          </tr>
-          <tr>
-            <td>
-              <Checkbox {...label} disabled />
+          <tr className="table3Columns-table-row bg">
+            <td className="table3Columns-checkbox-container">
+              <CheckBox disabled />
             </td>
             <td>Database 1</td>
             <td className="table3Columns-table-collations">
@@ -66,8 +54,18 @@ const Table3Columns = ({ headingCol1 }: Table3ColumnsProps) => {
             <td className="table3Columns-table-actions">Check privileges</td>
           </tr>
           <tr className="table3Columns-table-row">
-            <td>
-              <Checkbox {...label} />
+            <td className="table3Columns-checkbox-container">
+              <CheckBox disabled />
+            </td>
+            <td>Database 1</td>
+            <td className="table3Columns-table-collations">
+              utf8mb4_general_ci
+            </td>
+            <td className="table3Columns-table-actions">Check privileges</td>
+          </tr>
+          <tr className="table3Columns-table-row bg">
+            <td className="table3Columns-checkbox-container">
+              <CheckBox />
             </td>
             <td>Database 1</td>
             <td className="table3Columns-table-collations">
