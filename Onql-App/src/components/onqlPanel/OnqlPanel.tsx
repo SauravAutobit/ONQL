@@ -1,13 +1,12 @@
-import { Checkbox } from "@mui/material";
 import Button from "../button/Button";
 import FormPanel from "../formPanel/FormPanel";
 import QueryEditor from "../queryEditor/QueryEditor";
 import "./OnqlPanel.css";
 import FeaturesTabs from "../featuresTabs/FeaturesTabs";
 import { useLocation } from "react-router-dom";
+import CheckBox from "../checkBox/CheckBox";
 
 const OnqlPanel = () => {
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const { pathname } = useLocation();
   return (
     <>
@@ -37,9 +36,8 @@ const OnqlPanel = () => {
               />
             </div>
           </div>
-          <div className="form-onql-checkbox">
-            <Checkbox {...label} />
-            <p>Blind parameter</p>
+          <div className="form-onql-checkbox" style={{ margin: "20px 0" }}>
+            <CheckBox text="Blind parameter" />
           </div>
           <div className="form-panel-options">
             <p>Bookmark this ONQL query:</p>
@@ -56,20 +54,16 @@ const OnqlPanel = () => {
                   style={{ width: "7%" }}
                 />
                 <div className="form-onql-checkbox">
-                  <Checkbox {...label} />
-                  <p>Show this query here again</p>
+                  <CheckBox text="Show this query here again" />
                 </div>
                 <div className="form-onql-checkbox">
-                  <Checkbox {...label} />
-                  <p>Retain query box</p>
+                  <CheckBox text="Retain query box" />
                 </div>
                 <div className="form-onql-checkbox">
-                  <Checkbox {...label} />
-                  <p>Rollback when finished</p>
+                  <CheckBox text="Rollback when finished" />
                 </div>
                 <div className="form-onql-checkbox">
-                  <Checkbox {...label} />
-                  <p>Enable foreign key checks</p>
+                  <CheckBox text="Enable foreign key checks" />
                 </div>
               </div>
 
