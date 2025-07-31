@@ -81,6 +81,7 @@
 .form-onql-checkbox {
   display: flex;
   align-items: center;
+  margin: 0 10px;
 }
 
 .form-onql-options-container {
