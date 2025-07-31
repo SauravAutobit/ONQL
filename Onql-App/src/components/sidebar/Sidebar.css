@@ -69,7 +69,7 @@
   justify-content: space-between;
   width: 100%;
   cursor: pointer;
-  /* height: 82px; */
+  height: 26px;
   margin: 10px 0 0 0;
 }
 
@@ -227,4 +227,20 @@
 .css-1lwhjos-MuiPaper-root-MuiDrawer-paper {
   border: none !important;
   box-shadow: 2px 0px 10px 0px #00000033 !important;
+}
+
+.extension-total {
+  display: none;
+  width: 20px;
+  height: 20px;
+  background-color: var(--sidebar-bg-primary);
+  color: white;
+  border-radius: 80%;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.sidebar-option-container:hover .extension-total {
+  display: flex;
 }

@@ -385,6 +385,17 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
                     Installed
                   </p>
                 </div>
+                <div
+                  className={
+                    dropDownOpen.open && dropDownOpen.option === "installed"
+                      ? ""
+                      : "extension-total"
+                  }
+                >
+                  {!dropDownOpen.open &&
+                    dropDownOpen.option === "installed" &&
+                    "5"}
+                </div>
               </div>
               <Collapse
                 in={dropDownOpen.open && dropDownOpen.option === "installed"}
