@@ -75,7 +75,6 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-// CORRECTED: Main content component with proper margin transitions
 
 const ExtensionSidebarWidth = 413; // Same as your Drawer width
 
@@ -104,27 +103,6 @@ const Main = styled("main", {
     marginRight: `${ExtensionSidebarWidth}px`, // Add this
   }),
 }));
-
-// const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
-//   open?: boolean;
-// }>(({ theme, open }) => ({
-//   flexGrow: 1,
-//   padding: theme.spacing(3),
-//   transition: theme.transitions.create("margin", {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.leavingScreen,
-//   }),
-//   // Default margin for closed state
-//   marginLeft: `${iconAreaWidth}px`,
-//   ...(open && {
-//     transition: theme.transitions.create("margin", {
-//       easing: theme.transitions.easing.easeOut,
-//       duration: theme.transitions.duration.enteringScreen,
-//     }),
-//     // Margin when drawer is open
-//     marginLeft: `${drawerWidth}px`,
-//   }),
-// }));
 
 interface SidebarProps {
   open: boolean;
@@ -156,7 +134,6 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
   );
 
   return (
-    // REMOVED: display: "flex" is no longer needed here
     <Box>
       {/* <CssBaseline /> */}
       <Drawer variant="permanent" open={open}>

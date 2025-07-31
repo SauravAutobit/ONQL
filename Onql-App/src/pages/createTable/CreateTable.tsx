@@ -42,8 +42,8 @@ const CreateTable = () => {
         <TableOptions />
         <TableMetaSettings />
         <TablePartition />
+        <TableFooter />
       </div>
-      <TableFooter />
     </>
   );
 };

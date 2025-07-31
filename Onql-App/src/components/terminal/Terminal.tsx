@@ -7,9 +7,10 @@ const tabs = ["Ext 1", "Ext 2", "Terminal", "Ext 4", "Ext 5"];
 
 interface TerminalProps {
   open: boolean;
+  customStyle?: React.CSSProperties;
 }
 
-const Terminal = ({ open }: TerminalProps) => {
+const Terminal = ({ open, customStyle }: TerminalProps) => {
   const [terminalOpen, setTerminalOpen] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState("Ext 1");
   const [terminalSidebar, setTerminalSidebar] = useState<boolean>(false);
@@ -75,7 +76,11 @@ const Terminal = ({ open }: TerminalProps) => {
   return (
     <>
       <div
-        style={{ marginLeft: open ? "334px" : "71px", position: "relative" }}
+        style={{
+          marginLeft: open ? "334px" : "71px",
+          position: "relative",
+          ...customStyle,
+        }}
       >
         <div
           className={`terminal-wrapper ${
