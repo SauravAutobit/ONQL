@@ -2,6 +2,8 @@ import "./Terminal.css";
 import terminal from "../../assets/icons/terminal.svg";
 import { useEffect, useRef, useState } from "react";
 import downArrowTerminal from "../../assets/icons/downArrowTerminal.svg";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../store/store";
 
 const tabs = ["Ext 1", "Ext 2", "Terminal", "Ext 4", "Ext 5"];
 
@@ -73,6 +75,9 @@ const Terminal = ({ open, customStyle }: TerminalProps) => {
     }
   };
 
+  const extensionSidebarOpen = useSelector(
+    (store: RootState) => store?.extensionSidebar.value
+  );
   return (
     <>
       <div
@@ -83,9 +88,14 @@ const Terminal = ({ open, customStyle }: TerminalProps) => {
         }}
       >
         <div
-          className={`terminal-wrapper ${
-            terminalOpen ? "expanded" : "collapsed"
-          }`}
+          className={"terminal-wrapper"}
+          style={{
+            width: terminalOpen
+              ? extensionSidebarOpen
+                ? "calc(100% - 413px)"
+                : "100%"
+              : "103px",
+          }}
           onClick={toggleTerminal}
         >
           <div className="terminal-icon-heading">
@@ -123,7 +133,10 @@ const Terminal = ({ open, customStyle }: TerminalProps) => {
                 height: "152px",
                 resize: "none",
                 border: "none",
-                width: terminalSidebar ? "calc(100% - 100px)" : "100%",
+                width: `calc(100% - ${terminalSidebar ? 100 : 0}px - ${
+                  extensionSidebarOpen ? 413 : 0
+                }px)`,
+
                 transition: "width 0.2s ease",
               }}
             />

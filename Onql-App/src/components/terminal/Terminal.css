@@ -11,13 +11,6 @@
   cursor: pointer;
 }
 
-.terminal-wrapper.collapsed {
-  width: 103px;
-}
-
-.terminal-wrapper.expanded {
-  width: 100%;
-}
 .terminal-icon-heading {
   display: flex;
   align-items: center;
