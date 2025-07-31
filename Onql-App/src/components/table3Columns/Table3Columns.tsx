@@ -26,7 +26,7 @@ const Table3Columns = ({ headingCol1 }: Table3ColumnsProps) => {
             </td>
 
             <td>
-              <Link to="/protocol-database">Database 1</Link>
+              <Link to="/protocol-database">{headingCol1} 1</Link>
             </td>
             <td className="table3Columns-table-collations">
               utf8mb4_general_ci

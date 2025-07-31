@@ -1,16 +1,13 @@
 import "./Sidebar.css";
+import { Drawer, Main, drawerWidth, iconAreaWidth } from "./SidebarStyles";
 import * as React from "react";
-import { styled, type Theme } from "@mui/material/styles";
-import type { CSSObject } from "@mui/material";
+// import { styled, type Theme } from "@mui/material/styles";
+// import type { CSSObject } from "@mui/material";
 import Box from "@mui/material/Box";
-import MuiDrawer from "@mui/material/Drawer";
-// import CssBaseline from "@mui/material/CssBaseline";
-// import Typography from "@mui/material/Typography";
-// import IconButton from "@mui/material/IconButton";
-// import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-
+// import MuiDrawer from "@mui/material/Drawer";
 // Your custom assets
 import database from "../../assets/icons/database.svg";
+import serverWhite from "../../assets/icons/serverWhite.svg";
 import protocol from "../../assets/icons/protocol.svg";
 import plugin from "../../assets/icons/plugin.svg";
 import logo from "../../assets/icons/logo.svg";
@@ -18,9 +15,6 @@ import recentWatch from "../../assets/icons/recentWatch.svg";
 import downArrow from "../../assets/icons/downArrow.svg";
 import star from "../../assets/icons/star.svg";
 import backArrow from "../../assets/icons/backArrow.svg";
-
-// import Collapse from "react-bootstrap/Collapse";
-// import { Fade } from "react-bootstrap";
 import add from "../../assets/icons/add.svg";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
@@ -36,73 +30,75 @@ import fb from "../../assets/icons/fb.svg";
 import upArrow from "../../assets/icons/upArrow.svg";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
-// import Terminal from "../terminal/Terminal";
+// import TreeWithLines from "../treeWithLines/TreeWithLines";
+import TreeNode from "../treeNode/TreeNode";
+import treeData from "../treeNode/treeData";
+import type { NodeData } from "../treeNode/TreeNode";
 
-// --- Control the widths here ---
-const iconAreaWidth = 71;
-const drawerWidth = 334;
+// // --- Control the widths here ---
+// const iconAreaWidth = 71;
+// const drawerWidth = 334;
 
-const openedMixin = (theme: Theme): CSSObject => ({
-  width: drawerWidth,
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
-  }),
-  overflowX: "hidden",
-});
+// const openedMixin = (theme: Theme): CSSObject => ({
+//   width: drawerWidth,
+//   transition: theme.transitions.create("width", {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.enteringScreen,
+//   }),
+//   overflowX: "hidden",
+// });
 
-const closedMixin = (theme: Theme): CSSObject => ({
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  overflowX: "hidden",
-  width: `${iconAreaWidth}px`,
-});
+// const closedMixin = (theme: Theme): CSSObject => ({
+//   transition: theme.transitions.create("width", {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   overflowX: "hidden",
+//   width: `${iconAreaWidth}px`,
+// });
 
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  width: drawerWidth,
-  flexShrink: 0,
-  whiteSpace: "nowrap",
-  boxSizing: "border-box",
-  "& .MuiDrawer-paper": {
-    ...(open ? openedMixin(theme) : closedMixin(theme)),
-    background: `linear-gradient(to right, var(--sidebar-bg-primary) ${iconAreaWidth}px, var(--sidebar-bg-secondary) ${iconAreaWidth}px)`,
-    // ? `linear-gradient(to right, var(--sidebar-bg-primary) ${iconAreaWidth}px, var(--sidebar-bg-secondary) ${iconAreaWidth}px)`
-    // : `var(--sidebar-bg-primary)`,
-  },
-}));
+// const Drawer = styled(MuiDrawer, {
+//   shouldForwardProp: (prop) => prop !== "open",
+// })(({ theme, open }) => ({
+//   width: drawerWidth,
+//   flexShrink: 0,
+//   whiteSpace: "nowrap",
+//   boxSizing: "border-box",
+//   "& .MuiDrawer-paper": {
+//     ...(open ? openedMixin(theme) : closedMixin(theme)),
+//     background: `linear-gradient(to right, var(--sidebar-bg-primary) ${iconAreaWidth}px, var(--sidebar-bg-secondary) ${iconAreaWidth}px)`,
+//     // ? `linear-gradient(to right, var(--sidebar-bg-primary) ${iconAreaWidth}px, var(--sidebar-bg-secondary) ${iconAreaWidth}px)`
+//     // : `var(--sidebar-bg-primary)`,
+//   },
+// }));
 
+// const ExtensionSidebarWidth = 413; // Same as your Drawer width
 
-const ExtensionSidebarWidth = 413; // Same as your Drawer width
-
-const Main = styled("main", {
-  shouldForwardProp: (prop) =>
-    prop !== "open" && prop !== "extensionSidebarOpen",
-})<{
-  open?: boolean;
-  extensionSidebarOpen?: boolean;
-}>(({ theme, open, extensionSidebarOpen }) => ({
-  flexGrow: 1,
-  padding: theme.spacing(3),
-  transition: theme.transitions.create(["margin-left", "margin-right"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  marginLeft: `${iconAreaWidth}px`,
-  ...(open && {
-    transition: theme.transitions.create(["margin-left", "margin-right"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: `${drawerWidth}px`,
-  }),
-  ...(extensionSidebarOpen && {
-    marginRight: `${ExtensionSidebarWidth}px`, // Add this
-  }),
-}));
+// const Main = styled("main", {
+//   shouldForwardProp: (prop) =>
+//     prop !== "open" && prop !== "extensionSidebarOpen",
+// })<{
+//   open?: boolean;
+//   extensionSidebarOpen?: boolean;
+// }>(({ theme, open, extensionSidebarOpen }) => ({
+//   flexGrow: 1,
+//   padding: theme.spacing(3),
+//   transition: theme.transitions.create(["margin-left", "margin-right"], {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   marginLeft: `${iconAreaWidth}px`,
+//   ...(open && {
+//     transition: theme.transitions.create(["margin-left", "margin-right"], {
+//       easing: theme.transitions.easing.easeOut,
+//       duration: theme.transitions.duration.enteringScreen,
+//     }),
+//     marginLeft: `${drawerWidth}px`,
+//   }),
+//   ...(extensionSidebarOpen && {
+//     marginRight: `${ExtensionSidebarWidth}px`, // Add this
+//   }),
+// }));
 
 interface SidebarProps {
   open: boolean;
@@ -132,6 +128,13 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
   const extensionSidebarOpen = useSelector(
     (store: RootState) => store.extensionSidebar.value
   );
+
+  let dataToRender: NodeData[] = [];
+  if (selectedIcon === 0) {
+    dataToRender = treeData.filter((node) => node.id === "database-root");
+  } else if (selectedIcon === 1) {
+    dataToRender = treeData.filter((node) => node.id === "protocol-root");
+  }
 
   return (
     <Box>
@@ -181,18 +184,12 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
           {/* --- This is your Options Area (yellow background) --- */}
           {selectedIcon === 0 || selectedIcon === 1 ? (
             <div className={`options-panel ${open ? "is-open" : ""}`}>
-              {/* <IconButton
-              onClick={handleDrawerClose}
-              // sx={{ position: "absolute", top: 0, right: 0 }}
-            > */}
-
               <div
                 className="sidebar-option-backArrow"
                 onClick={handleDrawerClose}
               >
                 <img src={backArrow} alt="backArrow" />
               </div>
-              {/* </IconButton> */}
 
               <img
                 src={logo}
@@ -303,9 +300,24 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
                 className="sidebar-database-btn"
                 style={{ alignSelf: "center" }}
               >
-                <img src={database} alt="database" width="12px" />
-                Create New Database
+                <img src={serverWhite} alt="serverWhite" width="12px" />
+                Server panel: 125.0.25.1
                 <img src={add} alt="add" />
+              </div>
+              <div
+                className="tree-view-wrapper"
+                style={{
+                  padding: "10px",
+                  height: "100%",
+                  // backgroundColor: "#ffffff",
+                  // color: "#000",
+                }}
+              >
+                <ul className="tree-root">
+                  {dataToRender.map((rootNode) => (
+                    <TreeNode key={rootNode.id} node={rootNode} />
+                  ))}
+                </ul>
               </div>
             </div>
           ) : (

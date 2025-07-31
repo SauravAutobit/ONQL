@@ -127,22 +127,51 @@ export default Header;
 //   };
 //   const closeAll = () => setTabs([]);
 
-{
-  /* <img src={server} /> */
-}
-{
-  /* <Tabs
-        darkMode={false}
-        // draggable={draggable}
-        draggable
-        onTabClose={close}
-        onTabReorder={reorder}
-        onTabActive={active}
-        onDragBegin={() => console.log("Drag started")}
-        onDragEnd={() => console.log("Drag ended")}
-        tabs={tabs}
-        // pinnedRight={<button onClick={addTabWithIcon}>+</button>}
-      />
-      <button onClick={addTab}>Add Tab</button>
-      <button onClick={closeAll}>Close All</button> */
-}
+// /* <img src={server} /> */
+
+// /* <Tabs
+//       darkMode={false}
+//       // draggable={draggable}
+//       draggable
+//       onTabClose={close}
+//       onTabReorder={reorder}
+//       onTabActive={active}
+//       onDragBegin={() => console.log("Drag started")}
+//       onDragEnd={() => console.log("Drag ended")}
+//       tabs={tabs}
+//       // pinnedRight={<button onClick={addTabWithIcon}>+</button>}
+//     />
+//     <button onClick={addTab}>Add Tab</button>
+//     <button onClick={closeAll}>Close All</button> */
+
+// type Server = {
+//   id: number;
+//   name: string; // optional if needed
+// };
+
+// const [servers, setServers] = useState<Server[]>([
+//   { id: 0, name: "Server 0" },
+// ]);
+
+// const addServer = () => {
+//   const newId = servers.length > 0 ? servers[servers.length - 1].id + 1 : 0;
+//   setServers([...servers, { id: newId, name: `Server ${newId}` }]);
+// };
+
+// const removeServer = (id: number) => {
+//   setServers(servers.filter((server) => server.id !== id));
+// };
+
+// {servers.map((server, index) => (
+//   <div className="header-server-container" key={server.id}>
+//     <img src={serverIcon} alt="serverIcon" />
+//     <p className="header-server-text">
+//       Server: <span className="header-server-port">127.0.0.1 <b>{index}</b></span>
+//     </p>
+//     <img
+//       src={cross}
+//       alt="crossIcon"
+//       onClick={() => removeServer(server.id)}
+//     />
+//   </div>
+// ))}

@@ -1,0 +1,102 @@
+/* TreeNode.css */
+
+/* The root container for the entire tree */
+.tree-root {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tree-node {
+  /* Required for positioning the connector lines */
+  position: relative;
+  list-style-type: none;
+  padding-left: 25px; /* Create space for the lines */
+}
+
+/* --- The Connector Lines --- */
+
+/* The vertical line that connects sibling nodes */
+.tree-node::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 12px; /* Position the line */
+  border-left: 1px solid #434343; /*#c8d3d9*/
+}
+
+/* The horizontal line that connects the node to the vertical line */
+.tree-node::after {
+  content: "";
+  position: absolute;
+  top: 18px; /* Vertically align with the node content */
+  left: 12px;
+  width: 12px; /* Length of the horizontal line */
+  border-bottom: 1px solid #434343;
+}
+
+/* --- Special cases for a cleaner look --- */
+
+/* Hide the lines for the top-level nodes */
+.tree-root > .tree-node {
+  padding-left: 0;
+}
+.tree-root > .tree-node::before,
+.tree-root > .tree-node::after {
+  display: none;
+}
+
+/* Crop the vertical line for the last child in any list */
+.tree-node:last-child::before {
+  height: 18px; /* Stop the line at the same level as the horizontal connector */
+}
+
+/* --- Original Node Content Styling (no changes here) --- */
+
+.tree-node-content {
+  display: flex;
+  align-items: center;
+  padding: 8px 4px; /* Adjusted padding */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.tree-node-content:hover {
+  background-color: #dfe9f0;
+}
+
+.tree-node-content.active {
+  background-color: #d1e3f0;
+  font-weight: 500;
+}
+
+.tree-node-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.tree-node-arrow {
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  transition: transform 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.tree-node-arrow.expanded {
+  transform: rotate(90deg);
+}
+
+.tree-node-arrow.placeholder {
+  visibility: hidden;
+}
+
+/* The UL for children doesn't need its own padding anymore */
+.tree-node-children {
+  list-style-type: none;
+  padding-left: 0;
+}
