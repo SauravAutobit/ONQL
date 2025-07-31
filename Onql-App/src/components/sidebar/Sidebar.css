@@ -245,3 +245,12 @@
 .sidebar-option-container:hover .extension-total {
   display: flex;
 }
+
+.sidebarOptions {
+  transition: transform 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.sidebarOptions.dropdownOpen {
+  transform: rotate(180deg);
+}

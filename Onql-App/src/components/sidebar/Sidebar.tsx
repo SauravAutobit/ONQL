@@ -1,11 +1,7 @@
 import "./Sidebar.css";
 import { Drawer, Main, drawerWidth, iconAreaWidth } from "./SidebarStyles";
 import * as React from "react";
-// import { styled, type Theme } from "@mui/material/styles";
-// import type { CSSObject } from "@mui/material";
 import Box from "@mui/material/Box";
-// import MuiDrawer from "@mui/material/Drawer";
-// Your custom assets
 import database from "../../assets/icons/database.svg";
 import serverWhite from "../../assets/icons/serverWhite.svg";
 import protocol from "../../assets/icons/protocol.svg";
@@ -27,78 +23,11 @@ import pinterest from "../../assets/icons/pinterest.svg";
 import chrome from "../../assets/icons/chrome.svg";
 import insta from "../../assets/icons/insta.svg";
 import fb from "../../assets/icons/fb.svg";
-import upArrow from "../../assets/icons/upArrow.svg";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
-// import TreeWithLines from "../treeWithLines/TreeWithLines";
 import TreeNode from "../treeNode/TreeNode";
 import treeData from "../treeNode/treeData";
 import type { NodeData } from "../treeNode/TreeNode";
-
-// // --- Control the widths here ---
-// const iconAreaWidth = 71;
-// const drawerWidth = 334;
-
-// const openedMixin = (theme: Theme): CSSObject => ({
-//   width: drawerWidth,
-//   transition: theme.transitions.create("width", {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.enteringScreen,
-//   }),
-//   overflowX: "hidden",
-// });
-
-// const closedMixin = (theme: Theme): CSSObject => ({
-//   transition: theme.transitions.create("width", {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.leavingScreen,
-//   }),
-//   overflowX: "hidden",
-//   width: `${iconAreaWidth}px`,
-// });
-
-// const Drawer = styled(MuiDrawer, {
-//   shouldForwardProp: (prop) => prop !== "open",
-// })(({ theme, open }) => ({
-//   width: drawerWidth,
-//   flexShrink: 0,
-//   whiteSpace: "nowrap",
-//   boxSizing: "border-box",
-//   "& .MuiDrawer-paper": {
-//     ...(open ? openedMixin(theme) : closedMixin(theme)),
-//     background: `linear-gradient(to right, var(--sidebar-bg-primary) ${iconAreaWidth}px, var(--sidebar-bg-secondary) ${iconAreaWidth}px)`,
-//     // ? `linear-gradient(to right, var(--sidebar-bg-primary) ${iconAreaWidth}px, var(--sidebar-bg-secondary) ${iconAreaWidth}px)`
-//     // : `var(--sidebar-bg-primary)`,
-//   },
-// }));
-
-// const ExtensionSidebarWidth = 413; // Same as your Drawer width
-
-// const Main = styled("main", {
-//   shouldForwardProp: (prop) =>
-//     prop !== "open" && prop !== "extensionSidebarOpen",
-// })<{
-//   open?: boolean;
-//   extensionSidebarOpen?: boolean;
-// }>(({ theme, open, extensionSidebarOpen }) => ({
-//   flexGrow: 1,
-//   padding: theme.spacing(3),
-//   transition: theme.transitions.create(["margin-left", "margin-right"], {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.leavingScreen,
-//   }),
-//   marginLeft: `${iconAreaWidth}px`,
-//   ...(open && {
-//     transition: theme.transitions.create(["margin-left", "margin-right"], {
-//       easing: theme.transitions.easing.easeOut,
-//       duration: theme.transitions.duration.enteringScreen,
-//     }),
-//     marginLeft: `${drawerWidth}px`,
-//   }),
-//   ...(extensionSidebarOpen && {
-//     marginRight: `${ExtensionSidebarWidth}px`, // Add this
-//   }),
-// }));
 
 interface SidebarProps {
   open: boolean;
@@ -224,11 +153,12 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
                   <p className="sidebar-option-text">Recent</p>
                 </div>
                 <img
-                  src={
+                  src={downArrow}
+                  className={`sidebarOptions ${
                     dropDownOpen.open && dropDownOpen.option === "recent"
-                      ? upArrow
-                      : downArrow
-                  }
+                      ? "dropdownOpen"
+                      : ""
+                  }`}
                   alt="downArrow"
                 />
               </div>
@@ -273,11 +203,12 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
                   <p className="sidebar-option-text">Favourites</p>
                 </div>
                 <img
-                  src={
+                  src={downArrow}
+                  className={`sidebarOptions ${
                     dropDownOpen.open && dropDownOpen.option === "favourites"
-                      ? upArrow
-                      : downArrow
-                  }
+                      ? "dropdownOpen"
+                      : ""
+                  }`}
                   alt="downArrow"
                 />
               </div>
