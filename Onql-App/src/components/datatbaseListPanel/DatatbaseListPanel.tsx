@@ -2,13 +2,46 @@ import "./DatatbaseListPanel.css";
 import warning from "../../assets/icons/warning.svg";
 import FormPanel from "../formPanel/FormPanel";
 import CheckboxSearch from "../checkboxSearch/CheckboxSearch";
-import Table3Columns from "../table3Columns/Table3Columns";
+// import Table3Columns from "../table3Columns/Table3Columns";
 import { Link } from "react-router-dom";
 import Button from "../button/Button";
+import DynamicTable, { type Column } from "../dynamicTable/DynamicTable";
 
-// interface DatatbaseListPanelProps {
-//   selectedTab: string;
-// }
+// --- Data and Config for Table 1: Protocols ---
+interface ProtocolData {
+  id: number;
+  name: string;
+  collation: string;
+}
+
+const protocolColumns: Column<ProtocolData>[] = [
+  {
+    key: "name",
+    header: "Protocols",
+    render: (row) => (
+      <Link to={`/protocol/${row.id}`} className="table-link">
+        {row.name}
+      </Link>
+    ),
+  },
+  {
+    key: "collation",
+    header: "Dummy Text",
+  },
+  {
+    key: "actions",
+    header: "Dummy Text",
+    render: () => <a className="table-actions">Check privileges</a>,
+  },
+];
+
+const protocolData: ProtocolData[] = [
+  { id: 1, name: "Protocol_1", collation: "utf8_bin" },
+  { id: 2, name: "Protocol_2", collation: "utf8_general_ci" },
+  { id: 3, name: "Protocol_3", collation: "utf8mb4_general_ci" },
+  { id: 4, name: "Protocol_4", collation: "utf8_general_ci" },
+  { id: 5, name: "Protocol_5", collation: "utf8mb4_general_ci" },
+];
 const DatatbaseListPanel = () => {
   return (
     <>
@@ -36,7 +69,17 @@ const DatatbaseListPanel = () => {
       <div className="databaseListPanel-container">
         <CheckboxSearch />
 
-        <Table3Columns headingCol1="Database" />
+        {/* <Table3Columns headingCol1="Database" /> */}
+        <DynamicTable
+          columns={protocolColumns}
+          data={protocolData}
+          useZebraStriping={false} // This table doesn't have alternating colors in your screenshot
+          renderFooter={() => (
+            <div style={{ padding: "12px 16px", fontWeight: "bold" }}>
+              Total: {protocolData.length}
+            </div>
+          )}
+        />
 
         <div className="databaseListPanel-warning-container">
           <img src={warning} alt="warning" />

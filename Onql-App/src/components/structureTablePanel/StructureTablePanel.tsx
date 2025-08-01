@@ -1,19 +1,93 @@
 import Button from "../button/Button";
+import type { Column } from "../dynamicTable/DynamicTable";
+import DynamicTable from "../dynamicTable/DynamicTable";
 import FormPanel from "../formPanel/FormPanel";
 import QueryActions from "../queryActions/QueryActions";
-import Table7Columns from "../table7Columns/Table7Columns";
+// import Table7Columns from "../table7Columns/Table7Columns";
 import "./StructureTablePanel.css";
+import tableArrow from "../../assets/icons/tableArrow.svg";
+
+interface StructureData {
+  id: number;
+  name: string;
+  type: string;
+  collation: string;
+  attributes: string;
+  null: string;
+  default: string;
+  comments: string;
+  extra: string;
+}
+const structureColumns: Column<StructureData>[] = [
+  { key: "id", header: "#" },
+  { key: "name", header: "Name" },
+  { key: "type", header: "Type" },
+  { key: "collation", header: "Collation" },
+  { key: "attributes", header: "Attributes" },
+  { key: "null", header: "Null" },
+  { key: "default", header: "Default" },
+  { key: "comments", header: "Comments" },
+  {
+    key: "extra",
+    header: "Extra",
+    render: () => (
+      <div className="table-actions">
+        <a>Change</a> <a>Drop</a> <a>More</a>
+      </div>
+    ),
+  },
+];
+const structureData: StructureData[] = [
+  {
+    id: 1,
+    name: "Mobile",
+    type: "int(25)",
+    collation: "utf8mb4_general_ci",
+    attributes: "Fullname",
+    null: "No",
+    default: "None",
+    comments: "",
+    extra: "",
+  },
+  {
+    id: 2,
+    name: "Mobile",
+    type: "int(25)",
+    collation: "utf8mb4_general_ci",
+    attributes: "Fullname",
+    null: "No",
+    default: "None",
+    comments: "",
+    extra: "",
+  },
+  // ... more rows
+];
 
 const StructureTablePanel = () => {
   return (
     <>
-      <Button
-        btnText={"Table Structure"}
-        width={112}
-        height={30}
-        padding={"6px 10px"}
+      <div style={{ margin: "20px 0" }}>
+        <Button
+          btnText={"Table Structure"}
+          width={112}
+          height={30}
+          padding={"6px 10px"}
+        />
+      </div>
+      {/* <Table7Columns headingCol1={"#"} /> */}
+      <DynamicTable
+        columns={structureColumns}
+        data={structureData}
+        renderFooter={() => (
+          <div className="table-footer">
+            <img src={tableArrow} alt="arrow" />
+            <span>Check all</span>
+            <span className="table-actions">
+              With selected: <a>Browse</a> <a>Change</a> ...
+            </span>
+          </div>
+        )}
       />
-      <Table7Columns headingCol1={"#"} />
       <QueryActions />
       <FormPanel panelName={"Information"}>
         <div className="structureTablePanel-stats-container">

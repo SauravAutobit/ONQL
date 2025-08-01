@@ -1,0 +1,10 @@
+.mainContent-height {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mainContent-padding {
+  padding: 10px;
+}

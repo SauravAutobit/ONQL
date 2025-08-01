@@ -3,11 +3,12 @@ import TableFooter from "../../components/tableFooter/TableFooter";
 import TableMetaSettings from "../../components/tableMetaSettings/TableMetaSettings";
 import TableOptions from "../../components/tableOptions/TableOptions";
 import TablePartition from "../../components/tablePartition/TablePartition";
+import Terminal from "../../components/terminal/Terminal";
 
 const CreateTable = () => {
   return (
-    <>
-      <div style={{ padding: "10px" }}>
+    <div className="mainContent-height">
+      <div className="mainContent-padding">
         <div className="protocolsPanel-heading">Create Table</div>
         <div
           className="form-panel-fields"
@@ -44,7 +45,10 @@ const CreateTable = () => {
         <TablePartition />
         <TableFooter />
       </div>
-    </>
+      <div>
+        <Terminal />
+      </div>
+    </div>
   );
 };
 

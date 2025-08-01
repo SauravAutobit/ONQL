@@ -2,17 +2,14 @@ import "./Terminal.css";
 import terminal from "../../assets/icons/terminal.svg";
 import { useEffect, useRef, useState } from "react";
 import downArrowTerminal from "../../assets/icons/downArrowTerminal.svg";
-import { useSelector } from "react-redux";
-import type { RootState } from "../../store/store";
 
 const tabs = ["Ext 1", "Ext 2", "Terminal", "Ext 4", "Ext 5"];
 
 interface TerminalProps {
-  open: boolean;
   customStyle?: React.CSSProperties;
 }
 
-const Terminal = ({ open, customStyle }: TerminalProps) => {
+const Terminal = ({ customStyle }: TerminalProps) => {
   const [terminalOpen, setTerminalOpen] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState("Ext 1");
   const [terminalSidebar, setTerminalSidebar] = useState<boolean>(false);
@@ -42,7 +39,7 @@ const Terminal = ({ open, customStyle }: TerminalProps) => {
           behavior: "smooth",
           block: "end",
         });
-      }, 310); // match your open animation duration (~300ms)
+      }, 310);
 
       return () => clearTimeout(timeout);
     }
@@ -75,26 +72,17 @@ const Terminal = ({ open, customStyle }: TerminalProps) => {
     }
   };
 
-  const extensionSidebarOpen = useSelector(
-    (store: RootState) => store?.extensionSidebar.value
-  );
   return (
     <>
       <div
         style={{
-          marginLeft: open ? "334px" : "71px",
-          position: "relative",
           ...customStyle,
         }}
       >
         <div
           className={"terminal-wrapper"}
           style={{
-            width: terminalOpen
-              ? extensionSidebarOpen
-                ? "calc(100% - 413px)"
-                : "100%"
-              : "103px",
+            width: terminalOpen ? "100%" : "103px",
           }}
           onClick={toggleTerminal}
         >
@@ -133,9 +121,7 @@ const Terminal = ({ open, customStyle }: TerminalProps) => {
                 height: "152px",
                 resize: "none",
                 border: "none",
-                width: `calc(100% - ${terminalSidebar ? 100 : 0}px - ${
-                  extensionSidebarOpen ? 413 : 0
-                }px)`,
+                width: `calc(100% - ${terminalSidebar ? 100 : 0}px)`,
 
                 transition: "width 0.2s ease",
               }}

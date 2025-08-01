@@ -1,13 +1,18 @@
 import ExtensionHeader from "../../components/extensionHeader/ExtensionHeader";
 import ExtensionInfo from "../../components/extensionInfo/ExtensionInfo";
-// import ExtensionSidebar from "../../components/extensionSidebar/ExtensionSidebar";
+import Terminal from "../../components/terminal/Terminal";
 
 const ExtensionDetails = () => {
   return (
-    <>
-      <ExtensionHeader />
-      <ExtensionInfo />
-    </>
+    <div className="mainContent-height">
+      <div className="mainContent-padding">
+        <ExtensionHeader />
+        <ExtensionInfo />
+      </div>
+      <div>
+        <Terminal />
+      </div>
+    </div>
   );
 };
 

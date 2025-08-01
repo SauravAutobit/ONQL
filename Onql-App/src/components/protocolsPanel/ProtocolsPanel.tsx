@@ -3,6 +3,7 @@ import CheckboxSearch from "../../components/checkboxSearch/CheckboxSearch";
 import FormPanel from "../../components/formPanel/FormPanel";
 import Table3Columns from "../../components/table3Columns/Table3Columns";
 import Button from "../button/Button";
+import Terminal from "../terminal/Terminal";
 
 interface ProtocolsPanel {
   heading: string;
@@ -10,27 +11,32 @@ interface ProtocolsPanel {
 
 const ProtocolsPanel = ({ heading }: ProtocolsPanel) => {
   return (
-    <>
-      <div className="protocolsPanel-heading">{heading}</div>
-      <CheckboxSearch />
-      <Table3Columns headingCol1={heading} />
-      <FormPanel
-        panelName={`${heading === "Protocols" ? "Create" : "Add"} ${heading}`}
-      >
-        <div className="form-panel-fields" style={{ gap: "10px" }}>
-          <div className="form-panel-options">
-            <input
-              type="text"
-              placeholder="Protocol alias"
-              className="form-input"
-              style={{ width: "100%" }}
-            />
-          </div>
+    <div className="mainContent-height">
+      <div className="mainContent-padding">
+        <div className="protocolsPanel-heading">{heading}</div>
+        <CheckboxSearch />
+        <Table3Columns headingCol1={heading} />
+        <FormPanel
+          panelName={`${heading === "Protocols" ? "Create" : "Add"} ${heading}`}
+        >
+          <div className="form-panel-fields" style={{ gap: "10px" }}>
+            <div className="form-panel-options">
+              <input
+                type="text"
+                placeholder="Protocol alias"
+                className="form-input"
+                style={{ width: "100%" }}
+              />
+            </div>
 
-          <Button btnText="Create new protocol" width={143} />
-        </div>
-      </FormPanel>
-    </>
+            <Button btnText="Create new protocol" width={143} />
+          </div>
+        </FormPanel>
+      </div>
+      <div>
+        <Terminal />
+      </div>
+    </div>
   );
 };
 
