@@ -1,71 +1,85 @@
 // DynamicTable.tsx
 import React from "react";
-// import { Link } from "react-router-dom";
 import CheckBox from "../checkBox/CheckBox";
 import "./DynamicTable.css";
 
-// Define the shape for a column configuration object
 export interface Column<T> {
-  key: keyof T | "actions"; // The key from the data object, or a special key like 'actions'
-  header: string; // The text to display in the table header
-  // Optional custom render function for complex cells (like links, buttons, etc.)
+  key: keyof T | "actions";
+  header: string;
   render?: (row: T) => React.ReactNode;
 }
 
-// Define the component's props using a generic type 'T' for the data
 interface DynamicTableProps<T> {
   columns: Column<T>[];
   data: T[];
-  renderFooter?: () => React.ReactNode; // Optional function to render a custom footer
-  useZebraStriping?: boolean; // Option to enable/disable alternating row colors
+  renderFooter?: () => React.ReactNode;
+  useZebraStriping?: boolean;
+  // --- NEW PROPS ---
+  showRowBorders?: boolean; // Control if horizontal borders appear
+  showSelectAll?: boolean; // Control the checkbox in the header
 }
 
-const DynamicTable = <T extends { id: string | number }>({
+// --- UPDATED GENERIC CONSTRAINT to include optional isSummary flag ---
+const DynamicTable = <T extends { id: string | number; isSummary?: boolean }>({
   columns,
   data,
   renderFooter,
   useZebraStriping = true,
+  showRowBorders = true, // Default to true to not break other tables
+  showSelectAll = true, // Default to true
 }: DynamicTableProps<T>) => {
   return (
     <div className="dynamic-table-wrapper">
-      <table className="dynamic-table">
-        <thead className="dynamic-table ">
+      {/* Conditionally add a class to control borders via CSS */}
+      <table
+        className={`dynamic-table ${showRowBorders ? "with-borders" : ""}`}
+      >
+        <thead>
           <tr>
-            <th className="checkbox-cell">
-              {/* <CheckBox /> */}
-            </th>
+            {/* Conditionally render the "Select All" checkbox */}
+            <th className="checkbox-cell">{showSelectAll && <CheckBox />}</th>
             {columns.map((col) => (
               <th key={String(col.key)}>{col.header}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {data.map((row, rowIndex) => (
-            <tr
-              key={row.id}
-              className={
-                useZebraStriping && rowIndex % 2 !== 0 ? "zebra-row" : ""
-              }
-            >
-              <td className="checkbox-cell">
-                <CheckBox />
-              </td>
-              {columns.map((col) => (
-                <td key={`${row.id}-${String(col.key)}`}>
-                  {/* If a custom render function is provided, use it. */}
-                  {col.render
-                    ? col.render(row)
-                    : // Otherwise, just display the data from the object key.
-                      // This cast is safe if col.key is not 'actions'.
-                      (row[col.key as keyof T] as React.ReactNode)}
+          {data.map((row, rowIndex) => {
+            // Combine class names cleanly
+            const rowClasses = [
+              useZebraStriping && rowIndex % 2 !== 0 ? "zebra-row" : "",
+              row.isSummary ? "summary-row" : "",
+            ]
+              .filter(Boolean)
+              .join(" ");
+
+            return (
+              <tr key={row.id} className={rowClasses}>
+                <td className="checkbox-cell">
+                  {/* Don't render checkbox for summary rows */}
+                  {!row.isSummary && <CheckBox />}
                 </td>
-              ))}
-            </tr>
-          ))}
+                {columns.map((col) => (
+                  <td key={`${row.id}-${String(col.key)}`}>
+                    {col.render
+                      ? col.render(row)
+                      : (row[col.key as keyof T] as React.ReactNode)}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
         </tbody>
+        {/* --- RENDER FOOTER INSIDE A tfoot ELEMENT --- */}
+        {renderFooter && (
+          <tfoot>
+            <tr>
+              {/* The colSpan makes this cell span the entire table width */}
+              <td colSpan={columns.length + 1}>{renderFooter()}</td>
+            </tr>
+          </tfoot>
+        )}
       </table>
-      {/* Render the custom footer if the function is provided */}
-      {renderFooter && renderFooter()}
     </div>
   );
 };

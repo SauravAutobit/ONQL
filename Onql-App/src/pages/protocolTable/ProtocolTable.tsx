@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Button from "../../components/button/Button";
 import FormPanel from "../../components/formPanel/FormPanel";
-// import Table7Columns from "../../components/table7Columns/Table7Columns";
 import type { Column } from "../../components/dynamicTable/DynamicTable";
 import { Link } from "react-router-dom";
 import star from "../../assets/icons/star.svg";
@@ -12,11 +11,13 @@ import Terminal from "../../components/terminal/Terminal";
 interface DatabaseData {
   id: number;
   name: string;
-  row: number;
-  type: string;
-  collation: string;
-  size: string;
-  overhead: string;
+  row?: number;
+  type?: string;
+  collation?: string;
+  size?: string;
+  overhead?: string;
+  isSummary?: boolean; // Add the summary flag
+  actions?: string; // For the "Sum" text
 }
 
 const databaseColumns: Column<DatabaseData>[] = [
@@ -24,9 +25,6 @@ const databaseColumns: Column<DatabaseData>[] = [
     key: "name",
     header: "Table",
     render: (row) => (
-      // <Link to={`/database/${row.id}`} className="table-link">
-      //   {row.name}
-      // </Link>
       <Link to={"/protocol-column"} className="table-link">
         {row.name}
       </Link>
@@ -35,13 +33,16 @@ const databaseColumns: Column<DatabaseData>[] = [
   {
     key: "actions",
     header: "Action",
-    render: () => (
-      <div className="table-actions">
-        <img src={star} alt="star" className="star-icon" />
-        <span>Browser</span> <span>Structure</span> <span>Search</span>{" "}
-        <span>Insert</span> <span>Empty</span> <span>Drop</span>
-      </div>
-    ),
+    render: (row) =>
+      row.isSummary ? (
+        <span className="table-actions">{row.actions}</span>
+      ) : (
+        <div className="table-actions">
+          <img src={star} alt="star" className="star-icon" />
+          <span>Browser</span> <span>Structure</span> <span>Search</span>{" "}
+          <span>Insert</span> <span>Empty</span> <span>Drop</span>
+        </div>
+      ),
   },
   { key: "row", header: "Row" },
   { key: "type", header: "Type" },
@@ -49,6 +50,7 @@ const databaseColumns: Column<DatabaseData>[] = [
   { key: "size", header: "Size" },
   { key: "overhead", header: "Overhead" },
 ];
+
 const databaseData: DatabaseData[] = [
   {
     id: 1,
@@ -59,6 +61,17 @@ const databaseData: DatabaseData[] = [
     size: "16.0 Kib",
     overhead: "-",
   },
+  {
+    id: 2,
+    name: "1 table",
+    isSummary: true,
+    actions: "Sum",
+    row: 0,
+    type: "InnoDB",
+    collation: "utf8mb4_general_ci",
+    size: "16.0 Kib",
+    overhead: "0 B",
+  },
 ];
 
 const ProtocolTable = () => {
@@ -66,16 +79,17 @@ const ProtocolTable = () => {
 
   return (
     <div className="mainContent-height">
-      {/* <Table7Columns headingCol1={"Table"} /> */}
       <div className="mainContent-padding">
         <DynamicTable
           columns={databaseColumns}
           data={databaseData}
+          useZebraStriping={false} // Disable alternating colors for this table
+          showRowBorders={false} // --- Pass the new prop to hide borders ---
+          showSelectAll={false} // --- Pass the new prop to hide header checkbox ---
           renderFooter={() => (
             <div className="table-footer">
               <img src={tableArrow} alt="arrow" />
-              <span>Check all</span>
-              <span className="table-actions">With selected: ...</span>
+              <span className="table-link">Check all</span>
             </div>
           )}
         />

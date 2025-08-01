@@ -7,8 +7,7 @@
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  /* margin: 10px 0; */
-  margin-bottom: 10px;
+  margin: 10px 0;
   border-radius: 6px;
   overflow: hidden;
   border: 1px solid #e0e0e0;
@@ -18,8 +17,20 @@
 .dynamic-table td {
   padding: 10px 16px;
   text-align: left;
+  /* border-bottom: 1px solid #e0e0e0; */
+}
+
+/* --- BORDER CONTROL --- */
+/* Only apply bottom borders if the table has the 'with-borders' class */
+.dynamic-table.with-borders td,
+.dynamic-table.with-borders th {
   border-bottom: 1px solid #e0e0e0;
 }
+
+.dynamic-table.with-borders tbody tr:last-child td {
+  border-bottom: none;
+}
+/* --- END BORDER CONTROL --- */
 
 .dynamic-table thead {
   background-color: var(--sidebar-bg-primary); /* #4a5568 */
@@ -32,17 +43,32 @@
   /* border-bottom-width: 2px; */
 }
 
-.dynamic-table tbody tr:last-child td {
+/* .dynamic-table tbody tr:last-child td {
   border-bottom: none;
-}
+} */
 
 .dynamic-table tbody tr.zebra-row {
   background-color: var(--table-bg-primary); /* #f7fafc  */
 }
 
+/* --- NEW: Styling for the summary row --- */
+.dynamic-table tbody tr.summary-row {
+  font-weight: 600;
+  background-color: #ffffff; /* Ensure no zebra striping */
+}
+.dynamic-table tbody tr.summary-row .table-actions {
+  font-weight: 600;
+}
+
 .dynamic-table .checkbox-cell {
   width: 1%;
   padding-right: 0;
+}
+
+/* --- NEW: Styling for the footer inside the table --- */
+.dynamic-table tfoot td {
+  /* border-top: 1px solid #e0e0e0; */
+  padding: 0; /* Remove padding from the cell itself */
 }
 
 /* Helper classes for specific cell content styling */
@@ -68,8 +94,8 @@
 
 .table-footer {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 10px;
-  padding: 12px 16px;
-  border-top: 1px solid #e0e0e0;
+  padding: 10px 16px;
+  /* border-top: 1px solid #e0e0e0; */
 }

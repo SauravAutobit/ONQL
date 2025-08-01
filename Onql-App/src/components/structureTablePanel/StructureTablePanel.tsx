@@ -3,7 +3,6 @@ import type { Column } from "../dynamicTable/DynamicTable";
 import DynamicTable from "../dynamicTable/DynamicTable";
 import FormPanel from "../formPanel/FormPanel";
 import QueryActions from "../queryActions/QueryActions";
-// import Table7Columns from "../table7Columns/Table7Columns";
 import "./StructureTablePanel.css";
 import tableArrow from "../../assets/icons/tableArrow.svg";
 
@@ -74,7 +73,6 @@ const StructureTablePanel = () => {
           padding={"6px 10px"}
         />
       </div>
-      {/* <Table7Columns headingCol1={"#"} /> */}
       <DynamicTable
         columns={structureColumns}
         data={structureData}
