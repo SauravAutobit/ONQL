@@ -1,5 +1,3 @@
-// src/components/treeNode/treeData.ts
-
 // Make sure to import the NodeData type
 import type { NodeData } from "./TreeNode";
 
@@ -17,36 +15,43 @@ const treeData: NodeData[] = [
     id: "protocol-root",
     label: "Protocol",
     icon: protocolIcon, // Use a relevant root icon
+    path: "/protocol",
     children: [
       {
         id: "database",
         label: "Database",
         icon: databaseIcon,
+        path: "/protocol-database",
         children: [
           {
             id: "table",
             label: "Table",
             icon: tableIcon,
+            path: "/protocol-table",
             children: [
               {
                 id: "column",
                 label: "Column",
                 icon: columnIcon,
+                path: "/protocol-column",
               },
               {
                 id: "relation",
                 label: "Relation",
                 icon: relationIcon,
+                path: "/protocol-column",
               },
               {
                 id: "context",
                 label: "Context",
                 icon: contextIcon,
+                path: "/protocol-column",
               },
               {
                 id: "projection",
                 label: "Projection",
                 icon: projectionIcon,
+                path: "/protocol-column",
               },
             ],
           },
@@ -65,11 +70,13 @@ const treeData: NodeData[] = [
     id: "database-root",
     label: "Database",
     icon: databaseIcon, // Use a relevant root icon
+    path: "/",
     children: [
       {
         id: "table",
         label: "Table",
         icon: tableIcon,
+        path: "/create-table"
        },
 
       // {
