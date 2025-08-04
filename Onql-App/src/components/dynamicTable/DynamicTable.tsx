@@ -18,6 +18,7 @@ interface DynamicTableProps<T> {
   showRowBorders?: boolean; // Control if horizontal borders appear
   showSelectAll?: boolean; // Control the checkbox in the header
   showBorders?: boolean;
+  footerPosition?: "inside" | "outside";
 }
 
 // --- UPDATED GENERIC CONSTRAINT to include optional isSummary flag ---
@@ -31,6 +32,7 @@ const DynamicTable = <
   showRowBorders = true, // Default to true to not break other tables
   showSelectAll = true, // Default to true
   showBorders = true,
+  footerPosition = "inside",
 }: DynamicTableProps<T>) => {
   return (
     <div className="dynamic-table-wrapper">
@@ -77,15 +79,16 @@ const DynamicTable = <
           })}
         </tbody>
         {/* --- RENDER FOOTER INSIDE A tfoot ELEMENT --- */}
-        {renderFooter && (
+
+        {renderFooter && footerPosition === "inside" && (
           <tfoot>
             <tr>
-              {/* The colSpan makes this cell span the entire table width */}
               <td colSpan={columns.length + 1}>{renderFooter()}</td>
             </tr>
           </tfoot>
         )}
       </table>
+      {renderFooter && footerPosition === "outside" && renderFooter()}
     </div>
   );
 };

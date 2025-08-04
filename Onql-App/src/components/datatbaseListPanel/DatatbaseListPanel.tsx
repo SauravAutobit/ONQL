@@ -97,6 +97,7 @@ const DatatbaseListPanel = () => {
           showRowBorders={false} // --- Pass the new prop to hide borders ---
           showSelectAll={false} // --- Pass the new prop to hide header checkbox ---
           showBorders={false}
+          footerPosition="outside"
           renderFooter={() => (
             <div style={{ padding: "12px 16px", fontWeight: "bold" }}>
               Total: {protocolData.length}
