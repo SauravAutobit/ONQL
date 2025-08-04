@@ -2,7 +2,6 @@ import "./DatatbaseListPanel.css";
 import warning from "../../assets/icons/warning.svg";
 import FormPanel from "../formPanel/FormPanel";
 import CheckboxSearch from "../checkboxSearch/CheckboxSearch";
-// import Table3Columns from "../table3Columns/Table3Columns";
 import { Link } from "react-router-dom";
 import Button from "../button/Button";
 import DynamicTable, { type Column } from "../dynamicTable/DynamicTable";
@@ -18,17 +17,17 @@ interface ProtocolData {
 const protocolColumns: Column<ProtocolData>[] = [
   {
     key: "name",
-    header: "Protocols",
+    header: "Database",
     render: (row) => <div>{row.name}</div>,
   },
   {
     key: "collation",
-    header: "Dummy Text",
+    header: "Collation",
     render: (row) => <span className="cell-subtle-text">{row.collation}</span>,
   },
   {
     key: "actions",
-    header: "Dummy Text",
+    header: "Action",
     render: () => (
       <div className="table-actions">
         <span>Check privileges</span>
@@ -38,18 +37,28 @@ const protocolColumns: Column<ProtocolData>[] = [
 ];
 
 const protocolData: ProtocolData[] = [
-  { id: 1, name: "Protocol_1", collation: "utf8_bin", isLocked: true },
-  { id: 2, name: "Protocol_2", collation: "utf8_general_ci", isLocked: true },
+  { id: 1, name: "phpadmin", collation: "utf8_bin", isLocked: true },
+  {
+    id: 2,
+    name: "performance_schema",
+    collation: "utf8_general_ci",
+    isLocked: true,
+  },
   {
     id: 3,
-    name: "Protocol_3",
+    name: "mysql",
     collation: "utf8mb4_general_ci",
     isLocked: true,
   },
-  { id: 4, name: "Protocol_4", collation: "utf8_general_ci", isLocked: true },
+  {
+    id: 4,
+    name: "information_schema",
+    collation: "utf8_general_ci",
+    isLocked: true,
+  },
   {
     id: 5,
-    name: "Protocol_5",
+    name: "dummy",
     collation: "utf8mb4_general_ci",
     isLocked: false,
   }, // This one will be enabled
@@ -81,7 +90,6 @@ const DatatbaseListPanel = () => {
       <div className="databaseListPanel-container">
         <CheckboxSearch />
 
-        {/* <Table3Columns headingCol1="Database" /> */}
         <DynamicTable
           columns={protocolColumns}
           data={protocolData}
