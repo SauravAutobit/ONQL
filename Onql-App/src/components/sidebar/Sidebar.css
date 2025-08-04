@@ -167,6 +167,7 @@
   font-weight: var(--font-weight-primary);
   font-size: var(--font-size-primary);
   color: var(--text-color-secondary);
+  margin-bottom: 40px;
 }
 
 .dropdown-collapse-container.extensions-container {
