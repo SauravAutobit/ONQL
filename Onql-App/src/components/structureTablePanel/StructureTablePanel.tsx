@@ -18,7 +18,11 @@ interface StructureData {
   extra: string;
 }
 const structureColumns: Column<StructureData>[] = [
-  { key: "id", header: "#" },
+  {
+    key: "id",
+    header: "#",
+    render: (row) => <span className="table-link">{row.id}</span>,
+  },
   { key: "name", header: "Name" },
   { key: "type", header: "Type" },
   { key: "collation", header: "Collation" },
@@ -31,7 +35,7 @@ const structureColumns: Column<StructureData>[] = [
     header: "Extra",
     render: () => (
       <div className="table-actions">
-        <a>Change</a> <a>Drop</a> <a>More</a>
+        <span>Change</span> <span>Drop</span> <span>More</span>
       </div>
     ),
   },
@@ -59,6 +63,28 @@ const structureData: StructureData[] = [
     comments: "",
     extra: "",
   },
+  {
+    id: 3,
+    name: "Mobile",
+    type: "int(25)",
+    collation: "utf8mb4_general_ci",
+    attributes: "Fullname",
+    null: "No",
+    default: "None",
+    comments: "",
+    extra: "",
+  },
+  {
+    id: 4,
+    name: "Mobile",
+    type: "int(25)",
+    collation: "utf8mb4_general_ci",
+    attributes: "Fullname",
+    null: "No",
+    default: "None",
+    comments: "",
+    extra: "",
+  },
   // ... more rows
 ];
 
@@ -76,12 +102,20 @@ const StructureTablePanel = () => {
       <DynamicTable
         columns={structureColumns}
         data={structureData}
+        useZebraStriping={false} // Disable alternating colors for this table
+        showRowBorders={false} // --- Pass the new prop to hide borders ---
+        showSelectAll={false} // --- Pass the new prop to hide header checkbox ---
         renderFooter={() => (
           <div className="table-footer">
             <img src={tableArrow} alt="arrow" />
             <span>Check all</span>
             <span className="table-actions">
-              With selected: <a>Browse</a> <a>Change</a> ...
+              With selected:
+              <span style={{ marginLeft: "12px" }}>Browse</span>
+              <span>Change</span>
+              <span>Drop</span> <span>Primary</span> <span>unique</span>{" "}
+              <span>Index</span>
+              <span>Spatial</span> <span>Fulltext</span>
             </span>
           </div>
         )}

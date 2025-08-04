@@ -12,35 +12,47 @@ interface ProtocolData {
   id: number;
   name: string;
   collation: string;
+  isLocked?: boolean; // Optional property to control the checkbox
 }
 
 const protocolColumns: Column<ProtocolData>[] = [
   {
     key: "name",
     header: "Protocols",
-    render: (row) => (
-      <Link to={`/protocol/${row.id}`} className="table-link">
-        {row.name}
-      </Link>
-    ),
+    render: (row) => <div>{row.name}</div>,
   },
   {
     key: "collation",
     header: "Dummy Text",
+    render: (row) => <span className="cell-subtle-text">{row.collation}</span>,
   },
   {
     key: "actions",
     header: "Dummy Text",
-    render: () => <a className="table-actions">Check privileges</a>,
+    render: () => (
+      <div className="table-actions">
+        <span>Check privileges</span>
+      </div>
+    ),
   },
 ];
 
 const protocolData: ProtocolData[] = [
-  { id: 1, name: "Protocol_1", collation: "utf8_bin" },
-  { id: 2, name: "Protocol_2", collation: "utf8_general_ci" },
-  { id: 3, name: "Protocol_3", collation: "utf8mb4_general_ci" },
-  { id: 4, name: "Protocol_4", collation: "utf8_general_ci" },
-  { id: 5, name: "Protocol_5", collation: "utf8mb4_general_ci" },
+  { id: 1, name: "Protocol_1", collation: "utf8_bin", isLocked: true },
+  { id: 2, name: "Protocol_2", collation: "utf8_general_ci", isLocked: true },
+  {
+    id: 3,
+    name: "Protocol_3",
+    collation: "utf8mb4_general_ci",
+    isLocked: true,
+  },
+  { id: 4, name: "Protocol_4", collation: "utf8_general_ci", isLocked: true },
+  {
+    id: 5,
+    name: "Protocol_5",
+    collation: "utf8mb4_general_ci",
+    isLocked: false,
+  }, // This one will be enabled
 ];
 const DatatbaseListPanel = () => {
   return (
@@ -73,7 +85,10 @@ const DatatbaseListPanel = () => {
         <DynamicTable
           columns={protocolColumns}
           data={protocolData}
-          useZebraStriping={false} // This table doesn't have alternating colors in your screenshot
+          useZebraStriping={true} // Disable alternating colors for this table
+          showRowBorders={false} // --- Pass the new prop to hide borders ---
+          showSelectAll={false} // --- Pass the new prop to hide header checkbox ---
+          showBorders={false}
           renderFooter={() => (
             <div style={{ padding: "12px 16px", fontWeight: "bold" }}>
               Total: {protocolData.length}

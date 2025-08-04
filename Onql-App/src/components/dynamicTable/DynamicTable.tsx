@@ -17,22 +17,28 @@ interface DynamicTableProps<T> {
   // --- NEW PROPS ---
   showRowBorders?: boolean; // Control if horizontal borders appear
   showSelectAll?: boolean; // Control the checkbox in the header
+  showBorders?: boolean;
 }
 
 // --- UPDATED GENERIC CONSTRAINT to include optional isSummary flag ---
-const DynamicTable = <T extends { id: string | number; isSummary?: boolean }>({
+const DynamicTable = <
+  T extends { id: string | number; isSummary?: boolean; isLocked?: boolean }
+>({
   columns,
   data,
   renderFooter,
   useZebraStriping = true,
   showRowBorders = true, // Default to true to not break other tables
   showSelectAll = true, // Default to true
+  showBorders = true,
 }: DynamicTableProps<T>) => {
   return (
     <div className="dynamic-table-wrapper">
       {/* Conditionally add a class to control borders via CSS */}
       <table
-        className={`dynamic-table ${showRowBorders ? "with-borders" : ""}`}
+        className={`dynamic-table ${showRowBorders ? "with-borders" : ""} ${
+          showBorders ? "border" : ""
+        }`}
       >
         <thead>
           <tr>
@@ -47,7 +53,7 @@ const DynamicTable = <T extends { id: string | number; isSummary?: boolean }>({
           {data.map((row, rowIndex) => {
             // Combine class names cleanly
             const rowClasses = [
-              useZebraStriping && rowIndex % 2 !== 0 ? "zebra-row" : "",
+              useZebraStriping && rowIndex % 2 == 0 ? "zebra-row" : "",
               row.isSummary ? "summary-row" : "",
             ]
               .filter(Boolean)
@@ -57,7 +63,7 @@ const DynamicTable = <T extends { id: string | number; isSummary?: boolean }>({
               <tr key={row.id} className={rowClasses}>
                 <td className="checkbox-cell">
                   {/* Don't render checkbox for summary rows */}
-                  {!row.isSummary && <CheckBox />}
+                  {!row.isSummary && <CheckBox disabled={row.isLocked} />}
                 </td>
                 {columns.map((col) => (
                   <td key={`${row.id}-${String(col.key)}`}>
